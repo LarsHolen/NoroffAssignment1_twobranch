@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoroffAssignment1", "NoroffAssignment1\NoroffAssignment1.csproj", "{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiabloTestProject", "DiabloTestProject\DiabloTestProject.csproj", "{6187D457-F118-452D-8C47-1D83ABE1E29F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6187D457-F118-452D-8C47-1D83ABE1E29F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6187D457-F118-452D-8C47-1D83ABE1E29F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6187D457-F118-452D-8C47-1D83ABE1E29F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6187D457-F118-452D-8C47-1D83ABE1E29F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C764A9A-C39F-4BE7-A4F8-BFD5E1D702CC}
+	EndGlobalSection
+EndGlobal
