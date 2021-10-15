@@ -36,5 +36,29 @@ namespace NoroffAssignment1.Characters.Attributes
                 Intelligence = pa1.Intelligence + pa2.Intelligence
             };
         }
+
+        /*
+        public static bool operator ==(PrimaryAttributes pa1, PrimaryAttributes pa2)
+        {
+            if( pa1.Dexterity == pa2.Dexterity &&
+                pa1.Strength == pa2.Strength &&
+                pa1.Vitality == pa2.Vitality &&
+                pa1.Intelligence == pa2.Intelligence)
+            {
+                return true;
+            }
+        }
+        */
+        public static PrimaryAttributes operator *(int i, PrimaryAttributes pa1)
+        {
+            return new PrimaryAttributes()
+            {
+                Dexterity = i * pa1.Dexterity,
+                Strength = i * pa1.Strength,
+                Vitality = i * pa1.Vitality,
+                Intelligence = i * pa1.Intelligence
+            };
+        }
+
     }
 }

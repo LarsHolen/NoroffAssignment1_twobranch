@@ -8,15 +8,22 @@ using System.Threading.Tasks;
 
 namespace NoroffAssignment1.Characters
 {
-    abstract class Character
+    public abstract class Character
     {
         public string Name { get; set; }
-        public int Level { get; set; }
+        public int Level { get; set; } = 1;
         public PrimaryAttributes BasePrimaryAttributes { get; set; }
         public PrimaryAttributes TotalPrimaryAttributes { get; set; }
         public SecondaryAttributes SecondaryAttributes { get; set; }
 
-        public abstract void LevelUp();
+        public PrimaryAttributes StartPrimaryArrtibutes { get; set; }
+        public PrimaryAttributes LevelUpPrimaryAttributes { get; set; }
+
+        public void LevelUp(int l)
+        {
+            Level += l;
+            BasePrimaryAttributes = StartPrimaryArrtibutes + (Level * LevelUpPrimaryAttributes);
+        }
         public abstract void EquipItem(Item i);
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoroffAssignment1.Characters.Items
 {
-    abstract class Item
+    public abstract class Item
     {
         public String Name { get; set; }
         public int RequiredLevel { get; set; }

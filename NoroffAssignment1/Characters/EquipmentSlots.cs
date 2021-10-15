@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NoroffAssignment1.Characters
 {
-    enum EquipmentSlots
+    public enum EquipmentSlots
     {
         HEAD,
         BODY,
