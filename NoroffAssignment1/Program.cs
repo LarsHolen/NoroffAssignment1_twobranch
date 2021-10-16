@@ -1,4 +1,6 @@
-﻿using NoroffAssignment1.Characters.Attributes;
+﻿using NoroffAssignment1.Characters;
+using NoroffAssignment1.Characters.Attributes;
+using NoroffAssignment1.Characters.Items;
 using System;
 
 namespace NoroffAssignment1
@@ -8,7 +10,14 @@ namespace NoroffAssignment1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            PrimaryAttributes pa = new() { Strength = 10, Dexterity = 5, Intelligence = 3, Vitality = 8 };
+            ItemTests items = new ItemTests();
+
+            Warrior war = new Warrior("Haladan");
+            war.LevelUp(3);
+            war.EquipItem(items.Axe);
+            war.EquipItem(items.PlateArmor);
+            CharacterStatsDisplay characterSheet = new CharacterStatsDisplay(war);
+            Console.WriteLine(characterSheet.sheet.ToString());
           
             
         }

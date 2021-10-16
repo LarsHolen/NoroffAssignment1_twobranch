@@ -9,16 +9,35 @@ namespace NoroffAssignment1.Characters
         
         public Warrior(string n)
         {
+            // Setting name
             Name = n;
+            // Setting hardcoded start stats and usable weapons and armor
             StartPrimaryArrtibutes = new PrimaryAttributes { Strength = 5, Dexterity = 2, Intelligence = 1, Vitality = 10 };
             LevelUpPrimaryAttributes = new PrimaryAttributes { Strength = 3, Dexterity = 2, Intelligence = 1, Vitality = 5 };
             BasePrimaryAttributes = Level * StartPrimaryArrtibutes;
-        }
-        public override void EquipItem(Item i)
-        {
-            Console.WriteLine(  "Equipping"); 
-        }
+            SetTotalAttributes();
 
+            UsableArmorTypes.Add(ArmourType.ARMOUR_PLATE, 0);
+            UsableArmorTypes.Add(ArmourType.ARMOUR_MAIL, 0);
+
+
+            UsableWeaponTypes.Add(WeaponType.AXE, 0);
+            UsableWeaponTypes.Add(WeaponType.HAMMER, 0);
+            UsableWeaponTypes.Add(WeaponType.SWORD, 0);
+
+            
+            // Adding test items
+            EquippedItems[EquipmentSlots.BODY] = new Armor()
+            {
+                Name = "Common plate body armor",
+                RequiredLevel = 1,
+                FitInEquipmentSlot = EquipmentSlots.BODY,
+                ArmorType = ArmourType.ARMOUR_PLATE,
+                ItemBonusAttributes = new PrimaryAttributes() {Vitality = 2, Strength = 1 }
+            };
+            
+        }
+        
         
     }
 }

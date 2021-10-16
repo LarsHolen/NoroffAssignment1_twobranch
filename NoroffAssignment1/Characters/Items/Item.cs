@@ -13,6 +13,7 @@ namespace NoroffAssignment1.Characters.Items
         public int RequiredLevel { get; set; }
         public PlayerClasses CanBeUsedBy { get; set; }
         public EquipmentSlots FitInEquipmentSlot { get; set; }
-        public PrimaryAttributes ItemBonusAttributes { get; set; }
+        public PrimaryAttributes ItemBonusAttributes { get; set; } = new PrimaryAttributes();
+        
     }
 }

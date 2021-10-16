@@ -221,5 +221,25 @@ namespace DiabloTestProject
             Assert.Equal(expectedRogueIntelligence, rog.BasePrimaryAttributes.Intelligence);
         }
         #endregion
+
+        #region Calculate Secondary stats from a levelled up character(warrior)
+        [Fact]
+        public void CalculatingSecondaryAttributesFromALevelledWarrior()
+        {
+            // Arrange
+            int expectedWarriorHealth = 170;
+            int expectedWarriorArmorRating = 13;
+            int expectedWarriorElementalResistance = 2;
+
+            // Act
+            Warrior war = new Warrior("Haladan");
+            war.LevelUp(1);
+
+            // Assert
+            Assert.Equal(expectedWarriorHealth, war.SecondaryAttributes.Health);
+            Assert.Equal(expectedWarriorArmorRating, war.SecondaryAttributes.ArmorRating);
+            Assert.Equal(expectedWarriorElementalResistance, war.SecondaryAttributes.ElementalResistance);
+        }
+        #endregion
     }
 }
