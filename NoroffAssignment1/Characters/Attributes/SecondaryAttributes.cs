@@ -14,8 +14,6 @@ namespace NoroffAssignment1.Characters.Attributes
 
         public SecondaryAttributes(PrimaryAttributes pa)
         {
-            // I am forced to set these properties before running the Update function
-            
             Update(pa);
         }
 

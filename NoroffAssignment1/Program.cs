@@ -9,7 +9,7 @@ namespace NoroffAssignment1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.Clear();
             ItemTests items = new ItemTests();
 
             Warrior war = new Warrior("Haladan");

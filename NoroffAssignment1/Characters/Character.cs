@@ -107,25 +107,14 @@ namespace NoroffAssignment1.Characters
         /// </summary>
         private void SetDPS()
         {
-            switch(this.GetType().Name)
+            DamagePrimaryStat = this.GetType().Name switch
             {
-                case "Warrior":
-                    DamagePrimaryStat = TotalPrimaryAttributes.Strength;
-                    break;
-                case "Mage":
-                    DamagePrimaryStat = TotalPrimaryAttributes.Intelligence;
-                    break;
-                case "Ranger":
-                    DamagePrimaryStat = TotalPrimaryAttributes.Dexterity;
-                    break;
-                case "Rogue":
-                    DamagePrimaryStat = TotalPrimaryAttributes.Dexterity;
-                    break;
-                
-                default:
-                    // This should not happen, if we do not add more rpg classes
-                    throw new ArgumentException("Unable to find class damage Attribute");
-            }
+                "Warrior" => TotalPrimaryAttributes.Strength,
+                "Mage" => TotalPrimaryAttributes.Intelligence,
+                "Ranger" => TotalPrimaryAttributes.Dexterity,
+                "Rogue" => TotalPrimaryAttributes.Dexterity,
+                _ => throw new ArgumentException("Unable to find class damage Attribute"),// This should not happen, if we do not add more rpg classes
+            };
             // Set unarmed dps to 1
             float wepDmg = 1;
 

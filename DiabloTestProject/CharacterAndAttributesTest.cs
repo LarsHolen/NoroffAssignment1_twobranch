@@ -63,7 +63,7 @@ namespace DiabloTestProject
             Warrior war = new Warrior("Haladan");
             string expected = "Zero or negative input not legal";
             //act
-            Action act = () => war.LevelUp(value);
+            void act() => war.LevelUp(value);
             //assert
             ArgumentException exception = Assert.Throws<ArgumentException>(act);
             //The thrown exception can be used for even more detailed assertions.
