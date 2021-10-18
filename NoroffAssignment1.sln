@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoroffAssignment1", "NoroffAssignment1\NoroffAssignment1.csproj", "{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoroffAssignment1", "NoroffAssignment1\NoroffAssignment1.csproj", "{BB7FDB87-1CFD-4CD8-A29A-CFE8DC5E544B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiabloTestProject", "DiabloTestProject\DiabloTestProject.csproj", "{6187D457-F118-452D-8C47-1D83ABE1E29F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiabloTestProject", "DiabloTestProject\DiabloTestProject.csproj", "{6187D457-F118-452D-8C47-1D83ABE1E29F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6BE1902-A0DF-4499-9750-D6547FCE5951}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Downloads\Assignment 1_CSharp_RPGCharacters.pdf = ..\..\..\..\Downloads\Assignment 1_CSharp_RPGCharacters.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
