@@ -37,18 +37,28 @@ namespace NoroffAssignment1.Characters.Attributes
             };
         }
 
-        /*
-        public static bool operator ==(PrimaryAttributes pa1, PrimaryAttributes pa2)
+        /// <summary>
+        /// Makes testing easier.  Test if type and all stats are equal to parameter pa
+        /// </summary>
+        /// <param name="pa"></param>
+        /// <returns></returns>
+        public bool Equals(PrimaryAttributes pa)
         {
-            if( pa1.Dexterity == pa2.Dexterity &&
-                pa1.Strength == pa2.Strength &&
-                pa1.Vitality == pa2.Vitality &&
-                pa1.Intelligence == pa2.Intelligence)
-            {
-                return true;
-            }
+            return (pa != null) &&
+                this.GetType().Equals(pa.GetType()) && 
+                Dexterity == pa.Dexterity && 
+                Strength == pa.Strength && 
+                Vitality == pa.Vitality && 
+                Intelligence == pa.Intelligence;
         }
-        */
+       
+        /// <summary>
+        /// Makes leveling up easier.  One can multiply each stat in PrimaryAttributes
+        /// (BasePA_Stats + levelingPA_Stats * level in Character class)
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="pa1"></param>
+        /// <returns></returns>
         public static PrimaryAttributes operator *(int i, PrimaryAttributes pa1)
         {
             return new PrimaryAttributes()

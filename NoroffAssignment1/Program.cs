@@ -7,16 +7,16 @@ namespace NoroffAssignment1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             //Console.Clear();
-            ItemTests items = new ItemTests();
+            ItemTests items = new();
 
-            Warrior war = new Warrior("Haladan");
+            Warrior war = new("Haladan");
             war.LevelUp(3);
             war.EquipItem(items.Axe);
             war.EquipItem(items.PlateArmor);
-            CharacterStatsDisplay characterSheet = new CharacterStatsDisplay(war);
+            CharacterStatsDisplay characterSheet = new(war);
             Console.WriteLine(characterSheet.sheet.ToString());
           
             

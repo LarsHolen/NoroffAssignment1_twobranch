@@ -15,15 +15,14 @@ namespace NoroffAssignment1.Characters
         public PrimaryAttributes BasePrimaryAttributes { get; set; }
         public PrimaryAttributes TotalPrimaryAttributes { get; set; }
         public SecondaryAttributes SecondaryAttributes { get; set; }
-        public SecondaryAttributes SecondaryAttributesGetHurt { get; set; }
         public float Dps;
         public float DamagePrimaryStat;
 
         public PrimaryAttributes StartPrimaryArrtibutes { get; set; }
         public PrimaryAttributes LevelUpPrimaryAttributes { get; set; }
 
-        public Dictionary<WeaponType, int> UsableWeaponTypes = new Dictionary<WeaponType, int>();
-        public Dictionary<ArmorType, int> UsableArmorTypes = new Dictionary<ArmorType, int>();
+        public Dictionary<WeaponType, int> UsableWeaponTypes = new();
+        public Dictionary<ArmorType, int> UsableArmorTypes = new();
 
         public Dictionary<EquipmentSlots, Item> EquippedItems { get; set; } = new Dictionary<EquipmentSlots, Item>();
         
@@ -39,7 +38,6 @@ namespace NoroffAssignment1.Characters
             EquippedItems.Add(EquipmentSlots.WEAPON, null);
 
         }
-
 
         /// <summary>
         /// Adds int l to Level and increase the BasePrimaryAttributes
@@ -157,6 +155,7 @@ namespace NoroffAssignment1.Characters
                 throw new InvalidWeaponException("This class can not use this weapon.");
             }
         }
+
         public string EquipItem(Armor armor)
         {
             if(UsableArmorTypes.ContainsKey(armor.ArmorType))

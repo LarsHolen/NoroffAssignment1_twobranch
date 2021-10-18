@@ -25,16 +25,7 @@ namespace NoroffAssignment1.Characters
             UsableWeaponTypes.Add(WeaponType.HAMMER, 0);
             UsableWeaponTypes.Add(WeaponType.SWORD, 0);
 
-            
-            // Adding test items
-            EquippedItems[EquipmentSlots.BODY] = new Armor()
-            {
-                Name = "Common plate body armor",
-                RequiredLevel = 1,
-                FitInEquipmentSlot = EquipmentSlots.BODY,
-                ArmorType = ArmorType.ARMOR_PLATE,
-                ItemBonusAttributes = new PrimaryAttributes() {Vitality = 2, Strength = 1 }
-            };
+           
             
         }
         

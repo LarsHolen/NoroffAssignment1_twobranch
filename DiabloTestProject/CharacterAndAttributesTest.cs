@@ -13,16 +13,16 @@ namespace DiabloTestProject
         {
             // Arrange
             int Attribute = 10;
-            
-            PrimaryAttributes pa1 = new PrimaryAttributes() { Strength = Attribute, Intelligence = Attribute, Vitality = Attribute, Dexterity = Attribute };
-            PrimaryAttributes pa2 = new PrimaryAttributes() { Strength = Attribute, Intelligence = Attribute, Vitality = Attribute, Dexterity = Attribute };
+            PrimaryAttributes pa1 = new() { Strength = Attribute, Intelligence = Attribute, Vitality = Attribute, Dexterity = Attribute };
+            PrimaryAttributes pa2 = new() { Strength = Attribute, Intelligence = Attribute, Vitality = Attribute, Dexterity = Attribute };
             int expectedAttribute = pa1.Strength + pa2.Strength;
+
             // Act
             PrimaryAttributes pa3 = pa1 + pa2;
             int actual = pa3.Strength;
+
             // Assert
             Assert.Equal(expectedAttribute, actual);
-
         }
         #endregion
 
@@ -32,12 +32,12 @@ namespace DiabloTestProject
         {
             // Arrange
             int expectedLevel = 1;
+
             //Act
-            Warrior war = new Warrior("Haladan");
+            Warrior war = new("Haladan");
 
             //Assert
             Assert.Equal(expectedLevel, war.Level);
-
         }
         #endregion
 
@@ -47,26 +47,29 @@ namespace DiabloTestProject
         {
             // Arrange
             int expectedNewLevel = 2;
+            Warrior war = new("Haladan");
+
             //Act
-            Warrior war = new Warrior("Haladan");
             war.LevelUp(1);
+
             //Assert
             Assert.Equal(expectedNewLevel, war.Level);
-
         }
+
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
         public void WarriorClass_LevelUp_zeroOrLess(int value)
         {
-            //arrange
-            Warrior war = new Warrior("Haladan");
+            // Arrange
+            Warrior war = new("Haladan");
             string expected = "Zero or negative input not legal";
-            //act
+
+            // Act
             void act() => war.LevelUp(value);
-            //assert
             ArgumentException exception = Assert.Throws<ArgumentException>(act);
-            //The thrown exception can be used for even more detailed assertions.
+
+            // Assert
             Assert.Equal(expected, exception.Message);
         }
 
@@ -77,73 +80,52 @@ namespace DiabloTestProject
         public void CreateWarriorWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedWarriorStrength = 5;
-            int expectedWarriorVitality = 10;
-            int expectedWarriorDexterity = 2;
-            int expectedWarriorIntelligence = 1;
+            PrimaryAttributes expected = new() { Intelligence = 1, Dexterity = 2, Strength = 5, Vitality = 10 };
+            
             //Act
-            Warrior war = new Warrior("Haladan");
+            Warrior war = new("Haladan");
 
             //Assert
-            Assert.Equal(expectedWarriorVitality, war.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedWarriorStrength, war.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedWarriorDexterity, war.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedWarriorIntelligence, war.BasePrimaryAttributes.Intelligence);
-            
-
+            Assert.True(expected.Equals(war.BasePrimaryAttributes));
         }
+
         [Fact]
         public void CreateMageWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedMageStrength = 1;
-            int expectedMageVitality = 5;
-            int expectedMageDexterity = 1;
-            int expectedMageIntelligence = 8;
+            PrimaryAttributes expected = new() { Vitality = 5, Strength = 1, Dexterity = 1, Intelligence = 8 };
+            
             //Act
-            Mage mag = new Mage("Binkol");
+            Mage mag = new("Binkol");
 
             //Assert
-            Assert.Equal(expectedMageVitality, mag.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedMageStrength, mag.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedMageDexterity, mag.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedMageIntelligence, mag.BasePrimaryAttributes.Intelligence);
-
-
+            Assert.True(expected.Equals(mag.BasePrimaryAttributes));
         }
+
         [Fact]
         public void CreateRangerWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedRangerStrength = 1;
-            int expectedRangerVitality = 8;
-            int expectedRangerDexterity = 7;
-            int expectedRangerIntelligence = 1;
+            PrimaryAttributes expected = new() { Intelligence = 1, Dexterity = 7, Strength = 1, Vitality = 8 };
+            
             //Act
-            Ranger ran = new Ranger("Sinolas");
+            Ranger ran = new("Sinolas");
 
             //Assert
-            Assert.Equal(expectedRangerVitality, ran.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedRangerStrength, ran.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedRangerDexterity, ran.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedRangerIntelligence, ran.BasePrimaryAttributes.Intelligence);
+            Assert.True(expected.Equals(ran.BasePrimaryAttributes));
         }
+
         [Fact]
         public void CreateRogueWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedRogueStrength = 2;
-            int expectedRogueVitality = 8;
-            int expectedRogueDexterity = 6;
-            int expectedRogueIntelligence = 1;
+            PrimaryAttributes expected = new() { Vitality = 8, Strength = 2, Dexterity = 6, Intelligence = 1 };
+
             //Act
-            Rogue rog = new Rogue("Robin");
+            Rogue rog = new("Robin");
 
             //Assert
-            Assert.Equal(expectedRogueVitality, rog.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedRogueStrength, rog.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedRogueDexterity, rog.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedRogueIntelligence, rog.BasePrimaryAttributes.Intelligence);
+            Assert.True(expected.Equals(rog.BasePrimaryAttributes));
         }
         #endregion
 
@@ -152,73 +134,53 @@ namespace DiabloTestProject
         public void LevelWarriorWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedWarriorStrength = 8;
-            int expectedWarriorVitality = 15;
-            int expectedWarriorDexterity = 4;
-            int expectedWarriorIntelligence = 2;
+            PrimaryAttributes expected = new() { Dexterity = 4, Intelligence = 2, Strength = 8, Vitality = 15 };
+            Warrior war = new("Haladan");
+
             //Act
-            Warrior war = new Warrior("Haladan");
             war.LevelUp(1);
+
             //Assert
-            Assert.Equal(expectedWarriorVitality, war.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedWarriorStrength, war.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedWarriorDexterity, war.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedWarriorIntelligence, war.BasePrimaryAttributes.Intelligence);
-
-
+            Assert.True(expected.Equals(war.BasePrimaryAttributes));
         }
         [Fact]
         public void LevelMageWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedMageStrength = 2;
-            int expectedMageVitality = 8;
-            int expectedMageDexterity = 2;
-            int expectedMageIntelligence = 13;
+            PrimaryAttributes expected = new() { Vitality = 8, Strength = 2, Dexterity = 2, Intelligence = 13 };
+            Mage mag = new("Binkol");
+
             //Act
-            Mage mag = new Mage("Binkol");
             mag.LevelUp(1);
+
             //Assert
-            Assert.Equal(expectedMageVitality, mag.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedMageStrength, mag.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedMageDexterity, mag.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedMageIntelligence, mag.BasePrimaryAttributes.Intelligence);
-
-
+            Assert.True(expected.Equals(mag.BasePrimaryAttributes));
         }
         [Fact]
         public void LevelRangerWithCorrectBasePrimaryAttributes()
         {
             // Arrange
-            int expectedRangerStrength = 2;
-            int expectedRangerVitality = 10;
-            int expectedRangerDexterity = 12;
-            int expectedRangerIntelligence = 2;
+            PrimaryAttributes expected = new() { Dexterity = 12, Intelligence = 2, Strength = 2, Vitality = 10 };
+            Ranger ran = new("Sinolas");
+
             //Act
-            Ranger ran = new Ranger("Sinolas");
             ran.LevelUp(1);
+
             //Assert
-            Assert.Equal(expectedRangerVitality, ran.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedRangerStrength, ran.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedRangerDexterity, ran.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedRangerIntelligence, ran.BasePrimaryAttributes.Intelligence);
+            Assert.True(expected.Equals(ran.BasePrimaryAttributes));
         }
         [Fact]
         public void LevelRogueWithCorrectBasePrimaryAttributes()
         {
-            // Arrange
-            int expectedRogueStrength = 3;
-            int expectedRogueVitality = 11;
-            int expectedRogueDexterity = 10;
-            int expectedRogueIntelligence = 2;
+            // Arrange           
+            PrimaryAttributes expected = new() { Dexterity = 10, Intelligence = 2, Strength = 3, Vitality = 11 };
+            Rogue rog = new("Robin");
+
             //Act
-            Rogue rog = new Rogue("Robin");
             rog.LevelUp(1);
+
             //Assert
-            Assert.Equal(expectedRogueVitality, rog.BasePrimaryAttributes.Vitality);
-            Assert.Equal(expectedRogueStrength, rog.BasePrimaryAttributes.Strength);
-            Assert.Equal(expectedRogueDexterity, rog.BasePrimaryAttributes.Dexterity);
-            Assert.Equal(expectedRogueIntelligence, rog.BasePrimaryAttributes.Intelligence);
+            Assert.True(expected.Equals(rog.BasePrimaryAttributes));
         }
         #endregion
 
@@ -227,18 +189,17 @@ namespace DiabloTestProject
         public void CalculatingSecondaryAttributesFromALevelledWarrior()
         {
             // Arrange
-            int expectedWarriorHealth = 170;
-            int expectedWarriorArmorRating = 13;
-            int expectedWarriorElementalResistance = 2;
+            SecondaryAttributes expected = new(new PrimaryAttributes() { Strength = 0, Vitality = 0, Intelligence = 0, Dexterity = 0 });
+            expected.Health = 150;
+            expected.ArmorRating = 12;
+            expected.ElementalResistance = 2;
 
             // Act
-            Warrior war = new Warrior("Haladan");
+            Warrior war = new("Haladan");
             war.LevelUp(1);
 
             // Assert
-            Assert.Equal(expectedWarriorHealth, war.SecondaryAttributes.Health);
-            Assert.Equal(expectedWarriorArmorRating, war.SecondaryAttributes.ArmorRating);
-            Assert.Equal(expectedWarriorElementalResistance, war.SecondaryAttributes.ElementalResistance);
+            Assert.True(expected.Equals(war.SecondaryAttributes));
         }
         #endregion
     }
