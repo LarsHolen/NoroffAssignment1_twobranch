@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NoroffAssignment1.Characters.Attributes
 {
-    public class PrimaryAttributes
+    public struct PrimaryAttributes
     {
         public int Strength { get; set; }
         public int Dexterity { get; set; }
