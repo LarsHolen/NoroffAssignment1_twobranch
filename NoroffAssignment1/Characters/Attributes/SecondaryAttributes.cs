@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NoroffAssignment1.Characters.Attributes
 {
-    public struct SecondaryAttributes
+    public class SecondaryAttributes
     {
         public int Health { get; set; }
         public int ArmorRating { get; set; }
@@ -15,9 +15,7 @@ namespace NoroffAssignment1.Characters.Attributes
         public SecondaryAttributes(PrimaryAttributes pa)
         {
             // I am forced to set these properties before running the Update function
-            Health = 0;
-            ArmorRating = 0;
-            ElementalResistance = 0;
+            
             Update(pa);
         }
 
