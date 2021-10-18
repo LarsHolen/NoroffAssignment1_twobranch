@@ -17,7 +17,7 @@ namespace NoroffAssignment1.Characters
             BasePrimaryAttributes = Level * StartPrimaryArrtibutes;
 
 
-            UsableArmorTypes.Add(ArmourType.ARMOR_CLOTH, 0);
+            UsableArmorTypes.Add(ArmorType.ARMOR_CLOTH, 0);
 
             UsableWeaponTypes.Add(WeaponType.STAFF, 0);
             UsableWeaponTypes.Add(WeaponType.WAND, 0);

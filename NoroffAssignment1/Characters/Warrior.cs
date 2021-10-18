@@ -17,8 +17,8 @@ namespace NoroffAssignment1.Characters
             BasePrimaryAttributes = Level * StartPrimaryArrtibutes;
             SetTotalAttributes();
 
-            UsableArmorTypes.Add(ArmourType.ARMOUR_PLATE, 0);
-            UsableArmorTypes.Add(ArmourType.ARMOUR_MAIL, 0);
+            UsableArmorTypes.Add(ArmorType.ARMOR_PLATE, 0);
+            UsableArmorTypes.Add(ArmorType.ARMOR_MAIL, 0);
 
 
             UsableWeaponTypes.Add(WeaponType.AXE, 0);
@@ -32,7 +32,7 @@ namespace NoroffAssignment1.Characters
                 Name = "Common plate body armor",
                 RequiredLevel = 1,
                 FitInEquipmentSlot = EquipmentSlots.BODY,
-                ArmorType = ArmourType.ARMOUR_PLATE,
+                ArmorType = ArmorType.ARMOR_PLATE,
                 ItemBonusAttributes = new PrimaryAttributes() {Vitality = 2, Strength = 1 }
             };
             

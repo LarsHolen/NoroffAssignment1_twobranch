@@ -5,7 +5,7 @@ using NoroffAssignment1.Characters;
 
 namespace DiabloTestProject
 {
-    public class DiabloUnitTest1
+    public class CharacterAndAttributesTest
     {
         #region PrimaryAttributes 
         [Fact]

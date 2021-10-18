@@ -27,7 +27,7 @@ namespace NoroffAssignment1.Characters.Items
             Name = "Common Plate body armor",
             RequiredLevel = 1,
             FitInEquipmentSlot = EquipmentSlots.BODY,
-            ArmorType = ArmourType.ARMOUR_PLATE,
+            ArmorType = ArmorType.ARMOR_PLATE,
             ItemBonusAttributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
         };
         public Armor ClothHead { get; set; } = new Armor()
@@ -35,7 +35,7 @@ namespace NoroffAssignment1.Characters.Items
             Name = "Common cloth head armor",
             RequiredLevel = 1,
             FitInEquipmentSlot = EquipmentSlots.HEAD,
-            ArmorType = ArmourType.ARMOR_CLOTH,
+            ArmorType = ArmorType.ARMOR_CLOTH,
             ItemBonusAttributes = new PrimaryAttributes() { Vitality = 2, Strength = 1 }
         };
     }

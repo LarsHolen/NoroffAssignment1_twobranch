@@ -1,9 +1,9 @@
 ﻿namespace NoroffAssignment1.Characters.Items
 {
-    public enum ArmourType
+    public enum ArmorType
     {
-        ARMOUR_PLATE,
-        ARMOUR_MAIL,
+        ARMOR_PLATE,
+        ARMOR_MAIL,
         ARMOR_LEATHER,
         ARMOR_CLOTH
     }

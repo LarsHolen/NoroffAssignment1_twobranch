@@ -16,8 +16,8 @@ namespace NoroffAssignment1.Characters
             BasePrimaryAttributes = Level * StartPrimaryArrtibutes;
 
 
-            UsableArmorTypes.Add(ArmourType.ARMOR_LEATHER, 0);
-            UsableArmorTypes.Add(ArmourType.ARMOUR_MAIL, 0);
+            UsableArmorTypes.Add(ArmorType.ARMOR_LEATHER, 0);
+            UsableArmorTypes.Add(ArmorType.ARMOR_MAIL, 0);
 
             UsableWeaponTypes.Add(WeaponType.DAGGER, 0);
             UsableWeaponTypes.Add(WeaponType.SWORD, 0);

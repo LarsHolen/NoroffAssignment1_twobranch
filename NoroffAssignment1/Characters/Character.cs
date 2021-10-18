@@ -23,10 +23,14 @@ namespace NoroffAssignment1.Characters
         public PrimaryAttributes LevelUpPrimaryAttributes { get; set; }
 
         public Dictionary<WeaponType, int> UsableWeaponTypes = new Dictionary<WeaponType, int>();
-        public Dictionary<ArmourType, int> UsableArmorTypes = new Dictionary<ArmourType, int>();
+        public Dictionary<ArmorType, int> UsableArmorTypes = new Dictionary<ArmorType, int>();
 
         public Dictionary<EquipmentSlots, Item> EquippedItems { get; set; } = new Dictionary<EquipmentSlots, Item>();
         
+        /// <summary>
+        /// Base constructor
+        /// "Fill" the equippedItems dictionary with the correct slots and set item to null
+        /// </summary>
         public Character()
         {
             EquippedItems.Add(EquipmentSlots.HEAD, null);
@@ -41,7 +45,7 @@ namespace NoroffAssignment1.Characters
         /// Adds int l to Level and increase the BasePrimaryAttributes
         /// (Level-1 because the first level increase the PrimaryAttributes by StartPrimaryAttributes)
         /// 0 or less is not leagal input and throws exception
-        /// Calls SetTotalAttributes, to update TotalAttributes(Which in turn update SecondaryAttributes)
+        /// Calls SetTotalAttributes, to update everything that is influenced by the change in lvl)
         /// </summary>
         /// <param name="l"></param>
         public void LevelUp(int l)
@@ -64,7 +68,7 @@ namespace NoroffAssignment1.Characters
         /// </summary>
         public void SetTotalAttributes()
         {
-            // Add up TotalAttribs from base and items
+            // Zero out the TotalAttributes and start adding from the new base base and items
             TotalPrimaryAttributes = new PrimaryAttributes();
             TotalPrimaryAttributes += BasePrimaryAttributes;
             // Looping through EquippedItems and add bonusstats to TotalPrimaryAttributes
@@ -97,6 +101,10 @@ namespace NoroffAssignment1.Characters
             SetDPS();
         }
 
+        /// <summary>
+        /// To set the DPS, we get information about the class.  That tell us what attribute we
+        /// will use to calculate the DPS
+        /// </summary>
         private void SetDPS()
         {
             switch(this.GetType().Name)
@@ -115,39 +123,69 @@ namespace NoroffAssignment1.Characters
                     break;
                 
                 default:
+                    // This should not happen, if we do not add more rpg classes
                     throw new ArgumentException("Unable to find class damage Attribute");
             }
+            // Set unarmed dps to 1
             float wepDmg = 1;
+
+            // If weapon is in Equipmentslot.WEAPON, calculate weapon dps
             if(EquippedItems[EquipmentSlots.WEAPON]!= null)
             {
                 Weapon w = EquippedItems[EquipmentSlots.WEAPON] as Weapon;
                 wepDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
             }
+            // Calculate dps with the boost from PrimaryAttribute damage stat.
             Dps = wepDmg * (1 + DamagePrimaryStat / 100);
         }
 
 
         /// <summary>
-        /// Equip weapon or armor.  Check if class can use, and recalculate stats after equipping
+        /// Equip weapon or armor.  Check if class can use and is high enough level,
+        /// and recalculate stats after equipping.  Will overwrite any equipped item 
+        /// in that slot.  Returns string on sucsess.  Throws exception on fail
         /// </summary>
         /// <param name="weapon"></param>
-        public void EquipItem(Weapon weapon)
+        public string EquipItem(Weapon weapon)
         {
+           // Test if this class can equip the weapon
            if(UsableWeaponTypes.ContainsKey(weapon.WeaponType))
             {
-                EquippedItems[EquipmentSlots.WEAPON] = weapon;
-                SetTotalAttributes();
+                if(Level >= weapon.RequiredLevel)
+                {
+                    // Equip weapon and recalculate character stats
+                    EquippedItems[EquipmentSlots.WEAPON] = weapon;
+                    SetTotalAttributes();
+                    return "New weapon equipped!";
+                } else
+                {
+                    throw new InvalidWeaponException("This character is too low level for this weapon.");
+                }
+                
             } else
             {
-                throw new NotImplementedException();
+                // throws custom exception if one cant use the weapon
+                throw new InvalidWeaponException("This class can not use this weapon.");
             }
         }
-        public void EquipItem(Armor armor)
+        public string EquipItem(Armor armor)
         {
             if(UsableArmorTypes.ContainsKey(armor.ArmorType))
             {
-                EquippedItems[armor.FitInEquipmentSlot] = armor;
-                SetTotalAttributes();
+                if(Level >= armor.RequiredLevel)
+                {
+                    EquippedItems[armor.FitInEquipmentSlot] = armor;
+                    SetTotalAttributes();
+                    return "New armor equipped!";
+                } else
+                {
+                    throw new InvalidArmorException("This character is too low level to use this armor.");
+                }
+                
+            }
+            else 
+            {
+                throw new InvalidArmorException("This class can not use this armor.");
             }
         }
     }
