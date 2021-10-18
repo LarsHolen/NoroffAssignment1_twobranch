@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoroffAssignment1", "Noroff
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiabloTestProject", "DiabloTestProject\DiabloTestProject.csproj", "{6187D457-F118-452D-8C47-1D83ABE1E29F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6BE1902-A0DF-4499-9750-D6547FCE5951}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CD53CEB-AC7F-4E95-8E3A-B09E98CDE028}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Downloads\Assignment 1_CSharp_RPGCharacters.pdf = ..\..\..\..\Downloads\Assignment 1_CSharp_RPGCharacters.pdf
+		Assignment 1_CSharp_RPGCharacters.pdf = Assignment 1_CSharp_RPGCharacters.pdf
 	EndProjectSection
 EndProject
 Global
