@@ -8,7 +8,7 @@ namespace NoroffAssignment1.Characters
 {
     public class CharacterStatsDisplay
     {
-        public StringBuilder sheet = new StringBuilder();
+        public StringBuilder sheet = new();
         private Character character;
         public CharacterStatsDisplay(Character c)
         {
@@ -16,8 +16,13 @@ namespace NoroffAssignment1.Characters
             UpdateCharacterSheet();
         }
 
-        private void UpdateCharacterSheet()
+
+        /// <summary>
+        /// Making a charactersheet with stringbuilder to be able to show the character information
+        /// </summary>
+        public void UpdateCharacterSheet()
         {
+            sheet.Clear();
             sheet.AppendLine("-------Character Sheet--------");
             sheet.AppendLine();
             sheet.AppendLine("Name: " + character.Name );
@@ -33,6 +38,48 @@ namespace NoroffAssignment1.Characters
 
             sheet.AppendLine("Damage Per Second: " + character.Dps);
 
+            // Showing the inventory:
+
+            // Weapon
+            if(character.EquippedItems[EquipmentSlots.WEAPON] != null)
+            {
+                sheet.AppendLine("\n\nWeapon: " + character.EquippedItems[EquipmentSlots.WEAPON].Name);
+            }
+            else
+            {
+                sheet.AppendLine("\n\nWeapon: Nothing, you have to fight with your bare hands!");
+            }
+
+            // Head
+            if (character.EquippedItems[EquipmentSlots.HEAD] != null)
+            {
+                sheet.AppendLine("Head: " + character.EquippedItems[EquipmentSlots.HEAD].Name);
+
+            }
+            else
+            {
+                sheet.AppendLine("Head: A few strands of hair won't protect much! ");
+            }
+            // Body
+            if (character.EquippedItems[EquipmentSlots.BODY] != null)
+            {
+                sheet.AppendLine("Body: " + character.EquippedItems[EquipmentSlots.BODY].Name);
+
+            }
+            else
+            {
+                sheet.AppendLine("Body: Naked, as a new born babe!");
+            }
+            // Legs
+            if (character.EquippedItems[EquipmentSlots.LEGS] != null)
+            {
+                sheet.AppendLine("Legs: " + character.EquippedItems[EquipmentSlots.LEGS].Name);
+
+            }
+            else
+            {
+                sheet.AppendLine("Legs: Guess who skipped leg day!");
+            }
         }
     }
 }
