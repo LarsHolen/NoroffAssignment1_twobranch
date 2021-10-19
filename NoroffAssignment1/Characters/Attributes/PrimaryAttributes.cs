@@ -12,6 +12,7 @@ namespace NoroffAssignment1.Characters.Attributes
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
         public int Vitality { get; set; }
+ 
         public PrimaryAttributes(int str = 0, int dex = 0, int inte = 0, int vit = 0)
         {
             Strength = str;

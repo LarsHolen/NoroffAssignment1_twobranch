@@ -15,30 +15,24 @@ namespace NoroffAssignment1.Characters
         public PrimaryAttributes BasePrimaryAttributes { get; set; }
         public PrimaryAttributes TotalPrimaryAttributes { get; set; }
         public SecondaryAttributes SecondaryAttributes { get; set; }
-        public float Dps;
-        public float DamagePrimaryStat;
+        public double Dps;
+        public double PrimaryStatForDamage;
 
-        public PrimaryAttributes StartPrimaryArrtibutes { get; set; }
-        public PrimaryAttributes LevelUpPrimaryAttributes { get; set; }
+        public PrimaryAttributes LevelOnePrimaryAttributes { get; set; }
+        public PrimaryAttributes LevelUpBonusPrimaryAttributes { get; set; }
 
         public Dictionary<WeaponType, int> UsableWeaponTypes = new();
         public Dictionary<ArmorType, int> UsableArmorTypes = new();
 
-        public Dictionary<EquipmentSlots, Item> EquippedItems { get; set; } = new Dictionary<EquipmentSlots, Item>();
-        
-        /// <summary>
-        /// Base constructor
-        /// "Fill" the equippedItems dictionary with the correct slots and set item to null
-        /// </summary>
-        public Character()
+        public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter { get; set; } = new Dictionary<EquipmentSlots, Item>()
         {
-            EquippedItems.Add(EquipmentSlots.HEAD, null);
-            EquippedItems.Add(EquipmentSlots.BODY, null);
-            EquippedItems.Add(EquipmentSlots.LEGS, null);
-            EquippedItems.Add(EquipmentSlots.WEAPON, null);
-
-        }
-
+            { EquipmentSlots.HEAD, null}, 
+            { EquipmentSlots.BODY, null }, 
+            { EquipmentSlots.LEGS, null }, 
+            { EquipmentSlots.WEAPON, null } 
+        };
+        
+        
         /// <summary>
         /// Adds int l to Level and increase the BasePrimaryAttributes
         /// (Level-1 because the first level increase the PrimaryAttributes by StartPrimaryAttributes)
@@ -46,13 +40,13 @@ namespace NoroffAssignment1.Characters
         /// Calls SetTotalAttributes, to update everything that is influenced by the change in lvl)
         /// </summary>
         /// <param name="l"></param>
-        public void LevelUp(int l)
+        public void LevelUp(int level)
         {
-            if(l > 0)
+            if(level > 0)
             {
-                Level += l;
-                BasePrimaryAttributes = StartPrimaryArrtibutes + ((Level-1) * LevelUpPrimaryAttributes);
-                SetTotalAttributes();
+                Level += level;
+                BasePrimaryAttributes = LevelOnePrimaryAttributes + ((Level-1) * LevelUpBonusPrimaryAttributes);
+                CalculateStats();
             } else
             {
                 throw new ArgumentException("Zero or negative input not legal");
@@ -64,28 +58,28 @@ namespace NoroffAssignment1.Characters
         /// Updates TotalAttributes, by including PAs on items
         /// Calls SetSecondaryAttributes when done to update that
         /// </summary>
-        public void SetTotalAttributes()
+        public void CalculateStats()
         {
             // Zero out the TotalAttributes and start adding from the new base base and items
             TotalPrimaryAttributes = new PrimaryAttributes();
             TotalPrimaryAttributes += BasePrimaryAttributes;
             // Looping through EquippedItems and add bonusstats to TotalPrimaryAttributes
             
-            foreach (KeyValuePair<EquipmentSlots, Item> pair in EquippedItems)
+            foreach (KeyValuePair<EquipmentSlots, Item> pair in EquipmentSlotsOnCharacter)
             {
                 if(pair.Value != null) TotalPrimaryAttributes += pair.Value.ItemBonusAttributes;
 
             }
                        
             // Set SecondaryAttributes
-            SetSecondaryAttributes();
+            CalculateSecondaryAttributes();
             
         }
         
         /// <summary>
         /// Calculate SecondaryAttributes from TotalAttributes
         /// </summary>
-        private void SetSecondaryAttributes()
+        private void CalculateSecondaryAttributes()
         {
             if(SecondaryAttributes == null)
             {
@@ -96,16 +90,16 @@ namespace NoroffAssignment1.Characters
                 SecondaryAttributes.Update(TotalPrimaryAttributes);
             }
 
-            SetDPS();
+            CalculateDPS();
         }
 
         /// <summary>
         /// To set the DPS, we get information about the class.  That tell us what attribute we
         /// will use to calculate the DPS
         /// </summary>
-        private void SetDPS()
+        private void CalculateDPS()
         {
-            DamagePrimaryStat = this.GetType().Name switch
+            PrimaryStatForDamage = this.GetType().Name switch
             {
                 "Warrior" => TotalPrimaryAttributes.Strength,
                 "Mage" => TotalPrimaryAttributes.Intelligence,
@@ -114,16 +108,16 @@ namespace NoroffAssignment1.Characters
                 _ => throw new ArgumentException("Unable to find class damage Attribute"),// This should not happen, if we do not add more rpg classes
             };
             // Set unarmed dps to 1
-            float wepDmg = 1;
+            double weaponDmg = 1;
 
             // If weapon is in Equipmentslot.WEAPON, calculate weapon dps
-            if(EquippedItems[EquipmentSlots.WEAPON]!= null)
+            if(EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON]!= null)
             {
-                Weapon w = EquippedItems[EquipmentSlots.WEAPON] as Weapon;
-                wepDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
+                Weapon w = EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] as Weapon;
+                weaponDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
             }
             // Calculate dps with the boost from PrimaryAttribute damage stat.
-            Dps = wepDmg * (1 + DamagePrimaryStat / 100);
+            Dps = weaponDmg * (1.0 + PrimaryStatForDamage / 100.0);
         }
 
 
@@ -141,8 +135,8 @@ namespace NoroffAssignment1.Characters
                 if(Level >= weapon.RequiredLevel)
                 {
                     // Equip weapon and recalculate character stats
-                    EquippedItems[EquipmentSlots.WEAPON] = weapon;
-                    SetTotalAttributes();
+                    EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] = weapon;
+                    CalculateStats();
                     return "New weapon equipped!";
                 } else
                 {
@@ -162,8 +156,8 @@ namespace NoroffAssignment1.Characters
             {
                 if(Level >= armor.RequiredLevel)
                 {
-                    EquippedItems[armor.FitInEquipmentSlot] = armor;
-                    SetTotalAttributes();
+                    EquipmentSlotsOnCharacter[armor.FitInEquipmentSlot] = armor;
+                    CalculateStats();
                     return "New armor equipped!";
                 } else
                 {

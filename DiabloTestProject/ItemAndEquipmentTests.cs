@@ -24,7 +24,7 @@ namespace DiabloTestProject
                 RequiredLevel = 2,
                 FitInEquipmentSlot = EquipmentSlots.WEAPON,
                 WeaponType = WeaponType.AXE,
-                WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1f }
+                WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1 }
             };
             string expected = "This character is too low level for this weapon.";
 
@@ -74,7 +74,7 @@ namespace DiabloTestProject
                 RequiredLevel = 1,
                 FitInEquipmentSlot = EquipmentSlots.WEAPON,
                 WeaponType = WeaponType.BOW,
-                WeaponAttribute = new WeaponAttributes() { BaseDamage = 12, AttacksPerSecond = 0.8f }
+                WeaponAttribute = new WeaponAttributes() { BaseDamage = 12, AttacksPerSecond = 0.8 }
             };
             string expected = "This class can not use this weapon.";
 
@@ -165,7 +165,7 @@ namespace DiabloTestProject
         public void CalculateDPSForNewNakedAndUnarmedWarrior()
         {
             // Arrange
-            float expected = 1f * (1f + (5f / 100f));
+            double expected = 1.0 * (1.0 + (5.0 / 100.0));
 
             // Act
             Warrior war = new("Haladan");
@@ -180,7 +180,7 @@ namespace DiabloTestProject
         public void CalculateDPSForNewNakedButArmedWithAxeWarrior()
         {
             // Arrange
-            float expected = (7f *1.1f) * (1f + (5f / 100f));
+            double expected = (7.0 * 1.1) * (1.0 + (5.0 / 100.0));
             Warrior war = new("Haladan");
             Weapon testAxe = new()
             {
@@ -188,7 +188,7 @@ namespace DiabloTestProject
                 RequiredLevel = 1,
                 FitInEquipmentSlot = EquipmentSlots.WEAPON,
                 WeaponType = WeaponType.AXE,
-                WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1f }
+                WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1 }
             };
 
             // Act
@@ -205,7 +205,7 @@ namespace DiabloTestProject
         public void CalculateDPSForNewArmoredAndArmedWithAxeWarrior()
         {
             // Arrange
-            float expected = (7f * 1.1f) * (1f + ((5f + 1f) / 100f));
+            double expected = (7.0 * 1.1) * (1.0 + ((5.0 + 1.0) / 100.0));
             Warrior war = new("Haladan");
             Weapon testAxe = new()
             {
@@ -213,7 +213,7 @@ namespace DiabloTestProject
                 RequiredLevel = 1,
                 FitInEquipmentSlot = EquipmentSlots.WEAPON,
                 WeaponType = WeaponType.AXE,
-                WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1f }
+                WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1 }
             };
             Armor testPlateBody = new()
             {

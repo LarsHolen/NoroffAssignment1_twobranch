@@ -9,7 +9,7 @@ namespace NoroffAssignment1.Characters.Items
     public class Weapon : Item
     {
         public WeaponType WeaponType { get; set; }
-        public int DPS { get; set; }
+        public double DPS { get; set; }
         public WeaponAttributes WeaponAttribute { get; set; }
 
     }

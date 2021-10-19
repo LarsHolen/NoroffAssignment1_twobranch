@@ -8,8 +8,8 @@ namespace NoroffAssignment1.Characters.Items
 {
     public class WeaponAttributes
     {
-        public int BaseDamage { get; set; }
-        public float AttacksPerSecond { get; set; }
+        public double BaseDamage { get; set; }
+        public double AttacksPerSecond { get; set; }
 
     }
 }

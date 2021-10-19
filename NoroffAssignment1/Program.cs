@@ -12,14 +12,15 @@ namespace NoroffAssignment1
         static void Main()
         {
         
-            //Console.Clear();
+            /*
+            Shows a charactersheet and let the user try random armor/weapons. 
+            And level up the character.    
+              
+            */
             ItemTests items = new();
             bool loop = true;
             string input;
             Warrior war = new("Haladan");
-            //war.LevelUp(3);
-            //war.EquipItem(items.Axe);
-            //war.EquipItem(items.PlateArmor);
             CharacterStatsDisplay characterSheet = new(war);
 
             

@@ -12,10 +12,10 @@ namespace NoroffAssignment1.Characters
             // Setting name
             Name = n;
             // Setting hardcoded start stats and usable weapons and armor
-            StartPrimaryArrtibutes = new PrimaryAttributes { Strength = 5, Dexterity = 2, Intelligence = 1, Vitality = 10 };
-            LevelUpPrimaryAttributes = new PrimaryAttributes { Strength = 3, Dexterity = 2, Intelligence = 1, Vitality = 5 };
-            BasePrimaryAttributes = Level * StartPrimaryArrtibutes;
-            SetTotalAttributes();
+            LevelOnePrimaryAttributes = new PrimaryAttributes { Strength = 5, Dexterity = 2, Intelligence = 1, Vitality = 10 };
+            LevelUpBonusPrimaryAttributes = new PrimaryAttributes { Strength = 3, Dexterity = 2, Intelligence = 1, Vitality = 5 };
+            BasePrimaryAttributes = Level * LevelOnePrimaryAttributes;
+            CalculateStats();
 
             UsableArmorTypes.Add(ArmorType.ARMOR_PLATE, 0);
             UsableArmorTypes.Add(ArmorType.ARMOR_MAIL, 0);
