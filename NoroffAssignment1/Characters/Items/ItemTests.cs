@@ -142,7 +142,7 @@ namespace NoroffAssignment1.Characters.Items
             Name = "Human skin breastplate",
             RequiredLevel = 1,
             FitInEquipmentSlot = EquipmentSlots.BODY,
-            ArmorType = ArmorType.ARMOR_MAIL,
+            ArmorType = ArmorType.ARMOR_LEATHER,
             ItemBonusAttributes = new PrimaryAttributes() { Vitality = 40, Strength = 30 }
         };
         public Armor LeatherLegs { get; set; } = new Armor()
@@ -150,7 +150,7 @@ namespace NoroffAssignment1.Characters.Items
             Name = "Frog skin pants",
             RequiredLevel = 2,
             FitInEquipmentSlot = EquipmentSlots.LEGS,
-            ArmorType = ArmorType.ARMOR_MAIL,
+            ArmorType = ArmorType.ARMOR_LEATHER,
             ItemBonusAttributes = new PrimaryAttributes() { Dexterity = 55 }
         };
 
