@@ -26,9 +26,13 @@ namespace NoroffAssignment1.Characters
             UsableWeaponTypes.Add(WeaponType.SWORD, 0);
 
            
-            
+
         }
-        
-        
+        public override int GetMainStat()
+        {
+            return TotalPrimaryAttributes.Strength;
+        }
+
+
     }
 }

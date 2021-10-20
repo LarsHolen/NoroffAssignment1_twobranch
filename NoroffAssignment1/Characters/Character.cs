@@ -16,7 +16,7 @@ namespace NoroffAssignment1.Characters
         public PrimaryAttributes TotalPrimaryAttributes { get; set; }
         public SecondaryAttributes SecondaryAttributes { get; set; }
         public double Dps;
-        public double PrimaryStatForDamage;
+        
 
         public PrimaryAttributes LevelOnePrimaryAttributes { get; set; }
         public PrimaryAttributes LevelUpBonusPrimaryAttributes { get; set; }
@@ -31,7 +31,15 @@ namespace NoroffAssignment1.Characters
             { EquipmentSlots.LEGS, null }, 
             { EquipmentSlots.WEAPON, null } 
         };
-        
+
+        /// <summary>
+        /// This abstract method will get the main statistic which is used for calculating
+        /// damage.  Which statistic it is change from character class to character class.
+        /// So, the method is implemented in each character subclass, Warror(Strength), 
+        /// Mage(Intelligence), Rogue(Dexterity) and Ranger(Dexterity).
+        /// </summary>
+        /// <returns></returns>
+        public abstract int GetMainStat();
         
         /// <summary>
         /// Adds int l to Level and increase the BasePrimaryAttributes
@@ -99,14 +107,7 @@ namespace NoroffAssignment1.Characters
         /// </summary>
         private void CalculateDPS()
         {
-            PrimaryStatForDamage = this.GetType().Name switch
-            {
-                "Warrior" => TotalPrimaryAttributes.Strength,
-                "Mage" => TotalPrimaryAttributes.Intelligence,
-                "Ranger" => TotalPrimaryAttributes.Dexterity,
-                "Rogue" => TotalPrimaryAttributes.Dexterity,
-                _ => throw new ArgumentException("Unable to find class damage Attribute"),// This should not happen, if we do not add more rpg classes
-            };
+           
             // Set unarmed dps to 1
             double weaponDmg = 1;
 
@@ -117,7 +118,7 @@ namespace NoroffAssignment1.Characters
                 weaponDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
             }
             // Calculate dps with the boost from PrimaryAttribute damage stat.
-            Dps = weaponDmg * (1.0 + PrimaryStatForDamage / 100.0);
+            Dps = weaponDmg * (1.0 + GetMainStat() / 100.0);
         }
 
 

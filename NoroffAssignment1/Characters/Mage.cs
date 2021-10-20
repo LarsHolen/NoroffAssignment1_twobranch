@@ -22,8 +22,11 @@ namespace NoroffAssignment1.Characters
             UsableWeaponTypes.Add(WeaponType.STAFF, 0);
             UsableWeaponTypes.Add(WeaponType.WAND, 0);
         }
-        
 
+        public override int GetMainStat()
+        {
+            return TotalPrimaryAttributes.Intelligence;
+        }
 
     }
 }
