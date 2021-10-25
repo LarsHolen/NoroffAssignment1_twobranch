@@ -3,7 +3,7 @@
 
 namespace NoroffAssignment1.System.Equipment.Items
 {
-    public class Weapon : Item
+    public class Weapon : Item, IItem
     {
         public WeaponType WeaponType { get; set; }
         public double DPS { get; set; }

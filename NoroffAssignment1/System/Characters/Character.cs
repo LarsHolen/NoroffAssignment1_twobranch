@@ -14,8 +14,8 @@ namespace NoroffAssignment1.System.Characters
         public PrimaryAttributes PrimaryAttributesBase { get; set; }
         public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
         public SecondaryAttributes SecondaryAttributesTotal { get; set; }
-        public double Dps;
-        
+        public double Dps { get; set; }
+
 
         public PrimaryAttributes PrimaryAttributesAtLevelOne { get; set; }
         public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; set; }
