@@ -6,23 +6,23 @@ using System.Threading;
 
 namespace NoroffAssignment1
 {
+
     class Program
     {
 
         static void Main()
         {
-        
             /*
             Shows a charactersheet and let the user try random armor/weapons. 
             And level up the character.    
-              
-            */
+                */
+
             ItemTests items = new();
             bool loop = true;
             string input;
             Warrior war = new("Haladan");
             CharacterStatsDisplay characterSheet = new(war);
-
+          
             
             while(loop)
             {
@@ -93,6 +93,9 @@ namespace NoroffAssignment1
            
             
 
+
         }
+
+    
     }
 }

@@ -25,9 +25,10 @@ namespace DiabloTestProject
                 FitInEquipmentSlot = EquipmentSlots.WEAPON,
                 WeaponType = WeaponType.AXE,
                 WeaponAttribute = new WeaponAttributes() { BaseDamage = 7, AttacksPerSecond = 1.1 }
+                
             };
             string expected = "This character is too low level for this weapon.";
-
+       
             // Act
             void act() => war.EquipItem(testAxe);
             InvalidWeaponException exception = Assert.Throws<InvalidWeaponException>(act);

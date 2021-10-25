@@ -11,19 +11,19 @@ namespace NoroffAssignment1.Characters
             // Setting name
             Name = n;
             // Setting hardcoded start stats and usable weapons and armor
-            LevelOnePrimaryAttributes = new PrimaryAttributes { Strength = 1, Dexterity = 7, Intelligence = 1, Vitality = 8 };
-            LevelUpBonusPrimaryAttributes = new PrimaryAttributes { Strength = 1, Dexterity = 5, Intelligence = 1, Vitality = 2 };
-            BasePrimaryAttributes = Level * LevelOnePrimaryAttributes;
+            PrimaryAttributesAtLevelOne = new PrimaryAttributes { Strength = 1, Dexterity = 7, Intelligence = 1, Vitality = 8 };
+            PrimaryAttributesLevelUpBonus = new PrimaryAttributes { Strength = 1, Dexterity = 5, Intelligence = 1, Vitality = 2 };
+            PrimaryAttributesBase = Level * PrimaryAttributesAtLevelOne;
 
-            UsableArmorTypes.Add(ArmorType.ARMOR_LEATHER, 0);
-            UsableArmorTypes.Add(ArmorType.ARMOR_MAIL, 0);
+            UsableArmorTypes.Add(ArmorType.ARMOR_LEATHER);
+            UsableArmorTypes.Add(ArmorType.ARMOR_MAIL);
 
-            UsableWeaponTypes.Add(WeaponType.BOW, 0);
+            UsableWeaponTypes.Add(WeaponType.BOW);
         }
 
         public override int GetMainStat()
         {
-            return TotalPrimaryAttributes.Dexterity;
+            return PrimaryAttributesWithEquipment.Dexterity;
         }
 
 

@@ -86,7 +86,7 @@ namespace DiabloTestProject
             Warrior war = new("Haladan");
 
             //Assert
-            Assert.True(expected.Equals(war.BasePrimaryAttributes));
+            Assert.True(expected.Equals(war.PrimaryAttributesBase));
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace DiabloTestProject
             Mage mag = new("Binkol");
 
             //Assert
-            Assert.True(expected.Equals(mag.BasePrimaryAttributes));
+            Assert.True(expected.Equals(mag.PrimaryAttributesBase));
         }
 
         [Fact]
@@ -112,7 +112,7 @@ namespace DiabloTestProject
             Ranger ran = new("Sinolas");
 
             //Assert
-            Assert.True(expected.Equals(ran.BasePrimaryAttributes));
+            Assert.True(expected.Equals(ran.PrimaryAttributesBase));
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace DiabloTestProject
             Rogue rog = new("Robin");
 
             //Assert
-            Assert.True(expected.Equals(rog.BasePrimaryAttributes));
+            Assert.True(expected.Equals(rog.PrimaryAttributesBase));
         }
         #endregion
 
@@ -141,7 +141,7 @@ namespace DiabloTestProject
             war.LevelUp(1);
 
             //Assert
-            Assert.True(expected.Equals(war.BasePrimaryAttributes));
+            Assert.True(expected.Equals(war.PrimaryAttributesBase));
         }
         [Fact]
         public void LevelMageWithCorrectBasePrimaryAttributes()
@@ -154,7 +154,7 @@ namespace DiabloTestProject
             mag.LevelUp(1);
 
             //Assert
-            Assert.True(expected.Equals(mag.BasePrimaryAttributes));
+            Assert.True(expected.Equals(mag.PrimaryAttributesBase));
         }
         [Fact]
         public void LevelRangerWithCorrectBasePrimaryAttributes()
@@ -167,7 +167,7 @@ namespace DiabloTestProject
             ran.LevelUp(1);
 
             //Assert
-            Assert.True(expected.Equals(ran.BasePrimaryAttributes));
+            Assert.True(expected.Equals(ran.PrimaryAttributesBase));
         }
         [Fact]
         public void LevelRogueWithCorrectBasePrimaryAttributes()
@@ -180,7 +180,7 @@ namespace DiabloTestProject
             rog.LevelUp(1);
 
             //Assert
-            Assert.True(expected.Equals(rog.BasePrimaryAttributes));
+            Assert.True(expected.Equals(rog.PrimaryAttributesBase));
         }
         #endregion
 
@@ -199,7 +199,7 @@ namespace DiabloTestProject
             war.LevelUp(1);
 
             // Assert
-            Assert.True(expected.Equals(war.SecondaryAttributes));
+            Assert.True(expected.Equals(war.SecondaryAttributesTotal));
         }
         #endregion
     }

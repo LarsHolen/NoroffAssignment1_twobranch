@@ -27,14 +27,14 @@ namespace NoroffAssignment1.Characters
             sheet.AppendLine();
             sheet.AppendLine("Name: " + character.Name );
             sheet.AppendLine("Level: " + character.Level);
-            sheet.AppendLine("Strength: " + character.TotalPrimaryAttributes.Strength.ToString());
-            sheet.AppendLine("Vitality: " + character.TotalPrimaryAttributes.Vitality.ToString());
-            sheet.AppendLine("Dexterity: " + character.TotalPrimaryAttributes.Dexterity.ToString());
-            sheet.AppendLine("Intelligence: " + character.TotalPrimaryAttributes.Intelligence.ToString());
+            sheet.AppendLine("Strength: " + character.PrimaryAttributesWithEquipment.Strength.ToString());
+            sheet.AppendLine("Vitality: " + character.PrimaryAttributesWithEquipment.Vitality.ToString());
+            sheet.AppendLine("Dexterity: " + character.PrimaryAttributesWithEquipment.Dexterity.ToString());
+            sheet.AppendLine("Intelligence: " + character.PrimaryAttributesWithEquipment.Intelligence.ToString());
             sheet.AppendLine();
-            sheet.AppendLine("Health: " + character.SecondaryAttributes.Health.ToString());
-            sheet.AppendLine("Armor Rating: " + character.SecondaryAttributes.ArmorRating.ToString());
-            sheet.AppendLine("Elemental Resistance: " + character.SecondaryAttributes.ElementalResistance.ToString());
+            sheet.AppendLine("Health: " + character.SecondaryAttributesTotal.Health.ToString());
+            sheet.AppendLine("Armor Rating: " + character.SecondaryAttributesTotal.ArmorRating.ToString());
+            sheet.AppendLine("Elemental Resistance: " + character.SecondaryAttributesTotal.ElementalResistance.ToString());
 
             sheet.AppendLine("Damage Per Second: " + character.Dps);
 

@@ -2,9 +2,7 @@
 using NoroffAssignment1.Characters.Items;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace NoroffAssignment1.Characters
 {
@@ -12,17 +10,17 @@ namespace NoroffAssignment1.Characters
     {
         public string Name { get; set; }
         public int Level { get; set; } = 1;
-        public PrimaryAttributes BasePrimaryAttributes { get; set; }
-        public PrimaryAttributes TotalPrimaryAttributes { get; set; }
-        public SecondaryAttributes SecondaryAttributes { get; set; }
+        public PrimaryAttributes PrimaryAttributesBase { get; set; }
+        public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
+        public SecondaryAttributes SecondaryAttributesTotal { get; set; }
         public double Dps;
         
 
-        public PrimaryAttributes LevelOnePrimaryAttributes { get; set; }
-        public PrimaryAttributes LevelUpBonusPrimaryAttributes { get; set; }
+        public PrimaryAttributes PrimaryAttributesAtLevelOne { get; set; }
+        public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; set; }
 
-        public Dictionary<WeaponType, int> UsableWeaponTypes = new();
-        public Dictionary<ArmorType, int> UsableArmorTypes = new();
+        public List<WeaponType> UsableWeaponTypes = new();
+        public List<ArmorType> UsableArmorTypes = new();
 
         public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter { get; set; } = new Dictionary<EquipmentSlots, Item>()
         {
@@ -42,7 +40,7 @@ namespace NoroffAssignment1.Characters
         public abstract int GetMainStat();
         
         /// <summary>
-        /// Adds int l to Level and increase the BasePrimaryAttributes
+        /// Adds int l to Level and increase the PrimaryAttributesBase
         /// (Level-1 because the first level increase the PrimaryAttributes by StartPrimaryAttributes)
         /// 0 or less is not leagal input and throws exception
         /// Calls SetTotalAttributes, to update everything that is influenced by the change in lvl)
@@ -53,7 +51,7 @@ namespace NoroffAssignment1.Characters
             if(level > 0)
             {
                 Level += level;
-                BasePrimaryAttributes = LevelOnePrimaryAttributes + ((Level-1) * LevelUpBonusPrimaryAttributes);
+                PrimaryAttributesBase = PrimaryAttributesAtLevelOne + ((Level-1) * PrimaryAttributesLevelUpBonus);
                 CalculateStats();
             } else
             {
@@ -69,13 +67,13 @@ namespace NoroffAssignment1.Characters
         public void CalculateStats()
         {
             // Zero out the TotalAttributes and start adding from the new base base and items
-            TotalPrimaryAttributes = new PrimaryAttributes();
-            TotalPrimaryAttributes += BasePrimaryAttributes;
-            // Looping through EquippedItems and add bonusstats to TotalPrimaryAttributes
+            PrimaryAttributesWithEquipment = new PrimaryAttributes();
+            PrimaryAttributesWithEquipment += PrimaryAttributesBase;
+            // Looping through EquippedItems and add bonusstats to PrimaryAttributesWithEquipment
             
             foreach (KeyValuePair<EquipmentSlots, Item> pair in EquipmentSlotsOnCharacter)
             {
-                if(pair.Value != null) TotalPrimaryAttributes += pair.Value.ItemBonusAttributes;
+                if(pair.Value != null) PrimaryAttributesWithEquipment += pair.Value.ItemBonusAttributes;
 
             }
                        
@@ -89,13 +87,13 @@ namespace NoroffAssignment1.Characters
         /// </summary>
         private void CalculateSecondaryAttributes()
         {
-            if(SecondaryAttributes == null)
+            if(SecondaryAttributesTotal == null)
             {
-                SecondaryAttributes = new SecondaryAttributes(TotalPrimaryAttributes);
+                SecondaryAttributesTotal = new SecondaryAttributes(PrimaryAttributesWithEquipment);
             }
             else
             {
-                SecondaryAttributes.Update(TotalPrimaryAttributes);
+                SecondaryAttributesTotal.Update(PrimaryAttributesWithEquipment);
             }
 
             CalculateDPS();
@@ -131,7 +129,7 @@ namespace NoroffAssignment1.Characters
         public string EquipItem(Weapon weapon)
         {
            // Test if this class can equip the weapon
-           if(UsableWeaponTypes.ContainsKey(weapon.WeaponType))
+           if(UsableWeaponTypes.Contains(weapon.WeaponType))
             {
                 if(Level >= weapon.RequiredLevel)
                 {
@@ -153,7 +151,7 @@ namespace NoroffAssignment1.Characters
 
         public string EquipItem(Armor armor)
         {
-            if(UsableArmorTypes.ContainsKey(armor.ArmorType))
+            if(UsableArmorTypes.Contains(armor.ArmorType))
             {
                 if(Level >= armor.RequiredLevel)
                 {
