@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoroffAssignment1.Characters.Attributes
+namespace NoroffAssignment1.System.Characters.Attributes
 {
-    public class PrimaryAttributes
+    public struct PrimaryAttributes
     {
         public int Strength { get; set; }
         public int Dexterity { get; set; }
@@ -45,8 +45,7 @@ namespace NoroffAssignment1.Characters.Attributes
         /// <returns></returns>
         public bool Equals(PrimaryAttributes pa)
         {
-            return (pa != null) &&
-                this.GetType().Equals(pa.GetType()) && 
+            return this.GetType().Equals(pa.GetType()) &&
                 Dexterity == pa.Dexterity && 
                 Strength == pa.Strength && 
                 Vitality == pa.Vitality && 

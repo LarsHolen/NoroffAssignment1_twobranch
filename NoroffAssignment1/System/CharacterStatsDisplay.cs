@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using NoroffAssignment1.System.Characters;
+using NoroffAssignment1.System.Enums;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace NoroffAssignment1.Characters
+namespace NoroffAssignment1.System
 {
     public class CharacterStatsDisplay
     {

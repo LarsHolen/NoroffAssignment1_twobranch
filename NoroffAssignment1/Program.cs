@@ -1,6 +1,7 @@
-﻿using NoroffAssignment1.Characters;
-using NoroffAssignment1.Characters.Attributes;
-using NoroffAssignment1.Characters.Items;
+﻿using NoroffAssignment1.System;
+using NoroffAssignment1.System.Characters;
+using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Equipment.Items;
 using System;
 using System.Threading;
 

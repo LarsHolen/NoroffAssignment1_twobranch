@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoroffAssignment1.Characters.Items
+namespace NoroffAssignment1.System.Equipment.Items
 {
-    public class WeaponAttributes
+    public struct WeaponAttributes
     {
         public double BaseDamage { get; set; }
         public double AttacksPerSecond { get; set; }

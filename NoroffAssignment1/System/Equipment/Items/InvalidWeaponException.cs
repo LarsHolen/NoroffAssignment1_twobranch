@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NoroffAssignment1.Characters.Items
+namespace NoroffAssignment1.System.Equipment.Items
 {
     public class InvalidWeaponException : Exception
     {

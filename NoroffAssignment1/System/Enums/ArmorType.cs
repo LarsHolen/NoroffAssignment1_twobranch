@@ -1,4 +1,4 @@
-﻿namespace NoroffAssignment1.Characters.Items
+﻿namespace NoroffAssignment1.System.Enums
 {
     public enum ArmorType
     {

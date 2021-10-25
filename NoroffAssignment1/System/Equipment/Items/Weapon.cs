@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NoroffAssignment1.System.Enums;
 
-namespace NoroffAssignment1.Characters.Items
+
+namespace NoroffAssignment1.System.Equipment.Items
 {
     public class Weapon : Item
     {

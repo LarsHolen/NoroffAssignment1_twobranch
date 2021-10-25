@@ -1,7 +1,7 @@
 using System;
 using Xunit;
-using NoroffAssignment1.Characters.Attributes;
-using NoroffAssignment1.Characters;
+using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Characters;
 
 namespace DiabloTestProject
 {

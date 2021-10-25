@@ -1,8 +1,9 @@
-﻿using NoroffAssignment1.Characters.Attributes;
+﻿using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace NoroffAssignment1.Characters.Items
+namespace NoroffAssignment1.System.Equipment.Items
 {
     public class ItemTests
     {

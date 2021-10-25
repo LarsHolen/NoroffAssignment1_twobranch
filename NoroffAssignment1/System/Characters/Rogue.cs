@@ -1,8 +1,8 @@
-﻿using NoroffAssignment1.Characters.Attributes;
-using NoroffAssignment1.Characters.Items;
+﻿using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Enums;
 using System;
 
-namespace NoroffAssignment1.Characters
+namespace NoroffAssignment1.System.Characters
 {
     public class Rogue : Character
     {

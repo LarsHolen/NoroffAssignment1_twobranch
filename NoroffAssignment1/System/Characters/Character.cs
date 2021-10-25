@@ -1,10 +1,11 @@
-﻿using NoroffAssignment1.Characters.Attributes;
-using NoroffAssignment1.Characters.Items;
+﻿using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Enums;
+using NoroffAssignment1.System.Equipment.Items;
 using System;
 using System.Collections.Generic;
 
 
-namespace NoroffAssignment1.Characters
+namespace NoroffAssignment1.System.Characters
 {
     public abstract class Character
     {
@@ -87,14 +88,7 @@ namespace NoroffAssignment1.Characters
         /// </summary>
         private void CalculateSecondaryAttributes()
         {
-            if(SecondaryAttributesTotal == null)
-            {
-                SecondaryAttributesTotal = new SecondaryAttributes(PrimaryAttributesWithEquipment);
-            }
-            else
-            {
-                SecondaryAttributesTotal.Update(PrimaryAttributesWithEquipment);
-            }
+            SecondaryAttributesTotal = new SecondaryAttributes(PrimaryAttributesWithEquipment);
 
             CalculateDPS();
         }

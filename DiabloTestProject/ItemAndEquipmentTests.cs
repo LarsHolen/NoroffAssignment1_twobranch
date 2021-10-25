@@ -1,11 +1,7 @@
-﻿using NoroffAssignment1.Characters;
-using NoroffAssignment1.Characters.Attributes;
-using NoroffAssignment1.Characters.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NoroffAssignment1.System.Characters;
+using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Enums;
+using NoroffAssignment1.System.Equipment.Items;
 using Xunit;
 
 namespace DiabloTestProject
