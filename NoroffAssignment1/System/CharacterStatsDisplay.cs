@@ -14,7 +14,7 @@ namespace NoroffAssignment1.System
             UpdateCharacterSheet();
         }
 
-
+        
         /// <summary>
         /// Making a charactersheet with stringbuilder to be able to show the character information
         /// </summary>
@@ -79,5 +79,6 @@ namespace NoroffAssignment1.System
                 sheet.AppendLine("Legs: Guess who skipped leg day!");
             }
         }
+        
     }
 }

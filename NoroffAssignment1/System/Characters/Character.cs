@@ -1,24 +1,26 @@
 ﻿using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Characters.CharacterTypes;
 using NoroffAssignment1.System.Enums;
 using NoroffAssignment1.System.Equipment.Items;
 using System;
 using System.Collections.Generic;
-
+using System.Text;
 
 namespace NoroffAssignment1.System.Characters
 {
-    public abstract class Character
+    public class Character : ICharacter
     {
-        public string Name { get; set; }
-        public int Level { get; set; } = 1;
+        public string Name { get; init; }
+        public int Level { get; private set; } = 1;
+        public CharacterType CharacterType { get; init; }
+
+        public ICharacterAttributeStrategyType CharacterAttributeStrategy;
+
         public PrimaryAttributes PrimaryAttributesBase { get; set; }
         public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
         public SecondaryAttributes SecondaryAttributesTotal { get; set; }
         public double Dps { get; set; }
-
-
-        public PrimaryAttributes PrimaryAttributesAtLevelOne { get; set; }
-        public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; set; }
+     
 
         public List<WeaponType> UsableWeaponTypes = new();
         public List<ArmorType> UsableArmorTypes = new();
@@ -32,19 +34,29 @@ namespace NoroffAssignment1.System.Characters
         };
 
         /// <summary>
-        /// This abstract method will get the main statistic which is used for calculating
-        /// damage.  Which statistic it is change from character class to character class.
-        /// So, the method is implemented in each character subclass, Warror(Strength), 
-        /// Mage(Intelligence), Rogue(Dexterity) and Ranger(Dexterity).
+        /// Constructor
         /// </summary>
-        /// <returns></returns>
-        public abstract int GetMainStat();
-        
+        /// <param name="name"></param>
+        public Character(string name, ICharacterAttributeStrategyType characterType, CharacterType type)
+        {
+            Name = name;
+            CharacterType = type;
+            CharacterAttributeStrategy = characterType;
+            PrimaryAttributesBase = CharacterAttributeStrategy.SetPrimaryAttributesBase(Level);
+            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentSlotsOnCharacter);
+            UsableWeaponTypes = CharacterAttributeStrategy.SetUsableWeaponTypes();
+            UsableArmorTypes = CharacterAttributeStrategy.SetUsableArmorTypes();
+            CalculateDPS();
+        }
+
+
+
+        #region Methods for level up and updating stats
+
         /// <summary>
         /// Adds int l to Level and increase the PrimaryAttributesBase
-        /// (Level-1 because the first level increase the PrimaryAttributes by StartPrimaryAttributes)
         /// 0 or less is not leagal input and throws exception
-        /// Calls SetTotalAttributes, to update everything that is influenced by the change in lvl)
+        /// Calls CalculateStats, to update everything that is influenced by the change in lvl)
         /// </summary>
         /// <param name="l"></param>
         public void LevelUp(int level)
@@ -52,7 +64,7 @@ namespace NoroffAssignment1.System.Characters
             if(level > 0)
             {
                 Level += level;
-                PrimaryAttributesBase = PrimaryAttributesAtLevelOne + ((Level-1) * PrimaryAttributesLevelUpBonus);
+                PrimaryAttributesBase = CharacterAttributeStrategy.SetPrimaryAttributesBase(Level);
                 CalculateStats();
             } else
             {
@@ -62,45 +74,27 @@ namespace NoroffAssignment1.System.Characters
         }
 
         /// <summary>
-        /// Updates TotalAttributes, by including PAs on items
-        /// Calls SetSecondaryAttributes when done to update that
+        /// Updates PrimaryAttributesWithEquipment, and update SecondaryAttributes
+        /// Keeping this in a separate method, because its called both from LevelUp and EquipItem
+        /// Then calls CalculateDPS()
         /// </summary>
         public void CalculateStats()
         {
-            // Zero out the TotalAttributes and start adding from the new base base and items
-            PrimaryAttributesWithEquipment = new PrimaryAttributes();
-            PrimaryAttributesWithEquipment += PrimaryAttributesBase;
-            // Looping through EquippedItems and add bonusstats to PrimaryAttributesWithEquipment
-            
-            foreach (KeyValuePair<EquipmentSlots, Item> pair in EquipmentSlotsOnCharacter)
-            {
-                if(pair.Value != null) PrimaryAttributesWithEquipment += pair.Value.ItemBonusAttributes;
-
-            }
-                       
-            // Set SecondaryAttributes
-            CalculateSecondaryAttributes();
-            
-        }
-        
-        /// <summary>
-        /// Calculate SecondaryAttributes from TotalAttributes
-        /// </summary>
-        private void CalculateSecondaryAttributes()
-        {
+            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentSlotsOnCharacter);
             SecondaryAttributesTotal = new SecondaryAttributes(PrimaryAttributesWithEquipment);
-
             CalculateDPS();
         }
+        
+       
 
         /// <summary>
-        /// To set the DPS, we get information about the class.  That tell us what attribute we
-        /// will use to calculate the DPS
+        /// To set the DPS, we set unarmed weapondmg.  Test if we have weapon.  Get 
+        /// main dps attribute through the strategy.
         /// </summary>
         private void CalculateDPS()
         {
-           
-            // Set unarmed dps to 1
+            // Set unarmed weapondamage to 1, in case the character does not equit a weapon
+            // Dps for 1 weapondamage is 1, so no need to calculate dps for it.
             double weaponDmg = 1;
 
             // If weapon is in Equipmentslot.WEAPON, calculate weapon dps
@@ -110,10 +104,11 @@ namespace NoroffAssignment1.System.Characters
                 weaponDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
             }
             // Calculate dps with the boost from PrimaryAttribute damage stat.
-            Dps = weaponDmg * (1.0 + GetMainStat() / 100.0);
+            Dps = weaponDmg * (1.0 + CharacterAttributeStrategy.GetMainDpsStat(PrimaryAttributesWithEquipment)/ 100.0);
         }
+        #endregion
 
-
+        #region Equipping items
         /// <summary>
         /// Equip weapon or armor.  Check if class can use and is high enough level,
         /// and recalculate stats after equipping.  Will overwrite any equipped item 
@@ -163,5 +158,8 @@ namespace NoroffAssignment1.System.Characters
                 throw new InvalidArmorException("This class can not use this armor.");
             }
         }
+        #endregion
+
+        
     }
 }

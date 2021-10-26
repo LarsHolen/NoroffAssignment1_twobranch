@@ -13,7 +13,7 @@ namespace DiabloTestProject
         public void EquippingTooHighLevelWeaponThrowsException()
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Weapon testAxe = new()
             {
                 Name = "Axe of Misery",
@@ -39,7 +39,7 @@ namespace DiabloTestProject
         public void EquippingTooHighLevelArmorThrowsException()
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Armor testPlateBody = new()
             {
                 Name = "Armor of god",
@@ -64,7 +64,7 @@ namespace DiabloTestProject
         public void EquippingWrongWeaponTypeThrowsException()
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Weapon testBow = new()
             {
                 Name = "Bow of the destroyer",
@@ -89,7 +89,7 @@ namespace DiabloTestProject
         public void EquippingWrongTypeArmorThrowsException()
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Armor testClothHead = new()
             {
                 Name = "Wool cap",
@@ -114,7 +114,7 @@ namespace DiabloTestProject
         public void EquippingWeaponReturnString()
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Weapon testAxe = new()
             {
                 Name = "Axe of Demogorgon",
@@ -138,7 +138,7 @@ namespace DiabloTestProject
         public void EquippingArmorReturnString()
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Armor testArmor = new()
             {
                 Name = "Armor of Rallos Zek",
@@ -165,7 +165,7 @@ namespace DiabloTestProject
             double expected = 1.0 * (1.0 + (5.0 / 100.0));
 
             // Act
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
 
             // Assert
             Assert.Equal(expected, war.Dps);
@@ -178,7 +178,7 @@ namespace DiabloTestProject
         {
             // Arrange
             double expected = (7.0 * 1.1) * (1.0 + (5.0 / 100.0));
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Weapon testAxe = new()
             {
                 Name = "Axe of Mayhem",
@@ -203,7 +203,7 @@ namespace DiabloTestProject
         {
             // Arrange
             double expected = (7.0 * 1.1) * (1.0 + ((5.0 + 1.0) / 100.0));
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             Weapon testAxe = new()
             {
                 Name = "Axe of Mayhem",

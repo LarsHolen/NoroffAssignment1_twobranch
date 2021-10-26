@@ -1,6 +1,7 @@
 ﻿using NoroffAssignment1.System;
 using NoroffAssignment1.System.Characters;
 using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Enums;
 using NoroffAssignment1.System.Equipment.Items;
 using System;
 using System.Threading;
@@ -21,10 +22,14 @@ namespace NoroffAssignment1
             ItemTests items = new();
             bool loop = true;
             string input;
-            Warrior war = new("Haladan");
+           
+            // Using the factory to create a character
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
+
+            // Using CharacterStatsDisplay to show character stats on console.
             CharacterStatsDisplay characterSheet = new(war);
           
-            
+            // Adding a little interactivity to show that leveling and gearing up works
             while(loop)
             {
                 Console.WriteLine(characterSheet.sheet.ToString());
@@ -45,8 +50,8 @@ namespace NoroffAssignment1
                 characterSheet.UpdateCharacterSheet();
             }
             
-           
             
+
         }
 
 
@@ -94,9 +99,9 @@ namespace NoroffAssignment1
            
             
 
-
+       
         }
 
-    
+
     }
 }

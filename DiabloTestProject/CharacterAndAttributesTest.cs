@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using NoroffAssignment1.System.Characters.Attributes;
 using NoroffAssignment1.System.Characters;
+using NoroffAssignment1.System.Enums;
 
 namespace DiabloTestProject
 {
@@ -34,7 +35,7 @@ namespace DiabloTestProject
             int expectedLevel = 1;
 
             //Act
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
 
             //Assert
             Assert.Equal(expectedLevel, war.Level);
@@ -47,7 +48,7 @@ namespace DiabloTestProject
         {
             // Arrange
             int expectedNewLevel = 2;
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
 
             //Act
             war.LevelUp(1);
@@ -62,7 +63,7 @@ namespace DiabloTestProject
         public void WarriorClass_LevelUp_zeroOrLess(int value)
         {
             // Arrange
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             string expected = "Zero or negative input not legal";
 
             // Act
@@ -81,9 +82,9 @@ namespace DiabloTestProject
         {
             // Arrange
             PrimaryAttributes expected = new() { Intelligence = 1, Dexterity = 2, Strength = 5, Vitality = 10 };
-            
+
             //Act
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
 
             //Assert
             Assert.True(expected.Equals(war.PrimaryAttributesBase));
@@ -94,9 +95,9 @@ namespace DiabloTestProject
         {
             // Arrange
             PrimaryAttributes expected = new() { Vitality = 5, Strength = 1, Dexterity = 1, Intelligence = 8 };
-            
+
             //Act
-            Mage mag = new("Binkol");
+            Character mag = CharacterFactory.MakeCharacter(CharacterType.MAGE, "Binkol");
 
             //Assert
             Assert.True(expected.Equals(mag.PrimaryAttributesBase));
@@ -107,9 +108,9 @@ namespace DiabloTestProject
         {
             // Arrange
             PrimaryAttributes expected = new() { Intelligence = 1, Dexterity = 7, Strength = 1, Vitality = 8 };
-            
+
             //Act
-            Ranger ran = new("Sinolas");
+            Character ran = CharacterFactory.MakeCharacter(CharacterType.RANGER, "Sinolas");
 
             //Assert
             Assert.True(expected.Equals(ran.PrimaryAttributesBase));
@@ -122,7 +123,7 @@ namespace DiabloTestProject
             PrimaryAttributes expected = new() { Vitality = 8, Strength = 2, Dexterity = 6, Intelligence = 1 };
 
             //Act
-            Rogue rog = new("Robin");
+            Character rog = CharacterFactory.MakeCharacter(CharacterType.ROGUE, "Zindy");
 
             //Assert
             Assert.True(expected.Equals(rog.PrimaryAttributesBase));
@@ -135,7 +136,7 @@ namespace DiabloTestProject
         {
             // Arrange
             PrimaryAttributes expected = new() { Dexterity = 4, Intelligence = 2, Strength = 8, Vitality = 15 };
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
 
             //Act
             war.LevelUp(1);
@@ -148,7 +149,7 @@ namespace DiabloTestProject
         {
             // Arrange
             PrimaryAttributes expected = new() { Vitality = 8, Strength = 2, Dexterity = 2, Intelligence = 13 };
-            Mage mag = new("Binkol");
+            Character mag = CharacterFactory.MakeCharacter(CharacterType.MAGE, "Binkol");
 
             //Act
             mag.LevelUp(1);
@@ -161,7 +162,7 @@ namespace DiabloTestProject
         {
             // Arrange
             PrimaryAttributes expected = new() { Dexterity = 12, Intelligence = 2, Strength = 2, Vitality = 10 };
-            Ranger ran = new("Sinolas");
+            Character ran = CharacterFactory.MakeCharacter(CharacterType.RANGER, "Sinolas");
 
             //Act
             ran.LevelUp(1);
@@ -174,7 +175,7 @@ namespace DiabloTestProject
         {
             // Arrange           
             PrimaryAttributes expected = new() { Dexterity = 10, Intelligence = 2, Strength = 3, Vitality = 11 };
-            Rogue rog = new("Robin");
+            Character rog = CharacterFactory.MakeCharacter(CharacterType.ROGUE, "Zindy");
 
             //Act
             rog.LevelUp(1);
@@ -195,7 +196,7 @@ namespace DiabloTestProject
             expected.ElementalResistance = 2;
 
             // Act
-            Warrior war = new("Haladan");
+            Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
             war.LevelUp(1);
 
             // Assert
