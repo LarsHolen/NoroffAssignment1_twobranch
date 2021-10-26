@@ -7,6 +7,10 @@ namespace NoroffAssignment1.System.Equipment.Items
 {
     public class ItemTests
     {
+        /// <summary>
+        /// A test class, holding two lists of armor and weapon items.
+        /// </summary>
+
         public List<Weapon> WeaponList = new();
         public List<Armor> ArmorList = new();
         public Weapon Axe { get; set; } = new Weapon() 

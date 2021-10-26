@@ -46,7 +46,7 @@ namespace NoroffAssignment1
                 if (input == "q" || input == "Q") loop = false;
 
 
-                Console.Clear();
+                //Console.Clear();
                 characterSheet.UpdateCharacterSheet();
             }
             
@@ -67,7 +67,7 @@ namespace NoroffAssignment1
             Weapon weapon = items.WeaponList[rnd.Next(0, items.WeaponList.Count)];
             try
             {
-                result = cha.EquipItem(weapon);
+                result = cha.EquipmentHandler.EquipItem(weapon, cha.Level);
             }
             catch (InvalidWeaponException ex)
             {
@@ -87,7 +87,7 @@ namespace NoroffAssignment1
             Armor armor = items.ArmorList[rnd.Next(0, items.ArmorList.Count)];
             try
             {
-                result = cha.EquipItem(armor);
+                result = cha.EquipmentHandler.EquipItem(armor, cha.Level);
             } catch(InvalidArmorException ex)
             {
                 result = ex.Message;

@@ -1,4 +1,5 @@
-﻿using NoroffAssignment1.System.Characters;
+﻿using NoroffAssignment1.System;
+using NoroffAssignment1.System.Characters;
 using NoroffAssignment1.System.Characters.Attributes;
 using NoroffAssignment1.System.Enums;
 using NoroffAssignment1.System.Equipment.Items;
@@ -26,7 +27,7 @@ namespace DiabloTestProject
             string expected = "This character is too low level for this weapon.";
        
             // Act
-            void act() => war.EquipItem(testAxe);
+            void act() => war.EquipmentHandler.EquipItem(testAxe, war.Level);
             InvalidWeaponException exception = Assert.Throws<InvalidWeaponException>(act);
 
             // Assert
@@ -51,7 +52,7 @@ namespace DiabloTestProject
             string expected = "This character is too low level to use this armor.";
 
             // Act
-            void act() => war.EquipItem(testPlateBody);
+            void act() => war.EquipmentHandler.EquipItem(testPlateBody, war.Level);
             InvalidArmorException exception = Assert.Throws<InvalidArmorException>(act);
 
             // Assert
@@ -76,7 +77,7 @@ namespace DiabloTestProject
             string expected = "This class can not use this weapon.";
 
             // Act
-            void act() => war.EquipItem(testBow);
+            void act() => war.EquipmentHandler.EquipItem(testBow, war.Level);
             InvalidWeaponException exception = Assert.Throws<InvalidWeaponException>(act);
 
             // Assert
@@ -101,7 +102,7 @@ namespace DiabloTestProject
             string expected = "This class can not use this armor.";
 
             // Act
-            void act() => war.EquipItem(testClothHead);
+            void act() => war.EquipmentHandler.EquipItem(testClothHead, war.Level);
             InvalidArmorException exception = Assert.Throws<InvalidArmorException>(act);
 
             // Assert
@@ -126,7 +127,7 @@ namespace DiabloTestProject
             string expected = "New weapon equipped!";
 
             // Act
-            string actual = war.EquipItem(testAxe);
+            string actual = war.EquipmentHandler.EquipItem(testAxe, war.Level);
             
             // Assert
             Assert.Equal(expected, actual);
@@ -150,7 +151,7 @@ namespace DiabloTestProject
             string expected = "New armor equipped!";
 
             // Act
-            string actual = war.EquipItem(testArmor);
+            string actual = war.EquipmentHandler.EquipItem(testArmor, war.Level);
 
             // Assert
             Assert.Equal(expected, actual);
@@ -189,7 +190,7 @@ namespace DiabloTestProject
             };
 
             // Act
-            war.EquipItem(testAxe);
+            war.EquipmentHandler.EquipItem(testAxe, war.Level);
            
 
             // Assert
@@ -222,8 +223,8 @@ namespace DiabloTestProject
             };
 
             // Act
-            war.EquipItem(testAxe);
-            war.EquipItem(testPlateBody);
+            war.EquipmentHandler.EquipItem(testAxe, war.Level);
+            war.EquipmentHandler.EquipItem(testPlateBody, war.Level);
 
             // Assert
             Assert.Equal(expected, war.Dps);

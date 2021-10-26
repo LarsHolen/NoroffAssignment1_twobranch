@@ -14,7 +14,7 @@ namespace NoroffAssignment1.System.Characters
         public PrimaryAttributes PrimaryAttributesAtLevelOne { get; init; }
         public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; init; }
 
-        
+        public string ClassString { get; init; }
 
         public PrimaryAttributes SetPrimaryAttributesBase(int level);
 

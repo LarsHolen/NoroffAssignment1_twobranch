@@ -16,7 +16,7 @@ namespace NoroffAssignment1.System
 
         
         /// <summary>
-        /// Making a charactersheet with stringbuilder to be able to show the character information
+        /// Making a charactersheet with stringbuilder to show the character information
         /// </summary>
         public void UpdateCharacterSheet()
         {
@@ -24,6 +24,7 @@ namespace NoroffAssignment1.System
             sheet.AppendLine("-------Character Sheet--------");
             sheet.AppendLine();
             sheet.AppendLine("Name: " + character.Name );
+            sheet.AppendLine("Class: " + character.CharacterAttributeStrategy.ClassString);
             sheet.AppendLine("Level: " + character.Level);
             sheet.AppendLine("Strength: " + character.PrimaryAttributesWithEquipment.Strength.ToString());
             sheet.AppendLine("Vitality: " + character.PrimaryAttributesWithEquipment.Vitality.ToString());
@@ -39,9 +40,9 @@ namespace NoroffAssignment1.System
             // Showing the inventory:
 
             // Weapon
-            if(character.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] != null)
+            if(character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] != null)
             {
-                sheet.AppendLine("\n\nWeapon: " + character.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON].Name);
+                sheet.AppendLine("\n\nWeapon: " + character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON].Name);
             }
             else
             {
@@ -49,9 +50,9 @@ namespace NoroffAssignment1.System
             }
 
             // Head
-            if (character.EquipmentSlotsOnCharacter[EquipmentSlots.HEAD] != null)
+            if (character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.HEAD] != null)
             {
-                sheet.AppendLine("Head: " + character.EquipmentSlotsOnCharacter[EquipmentSlots.HEAD].Name);
+                sheet.AppendLine("Head: " + character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.HEAD].Name);
 
             }
             else
@@ -59,9 +60,9 @@ namespace NoroffAssignment1.System
                 sheet.AppendLine("Head: A few strands of hair won't protect much! ");
             }
             // Body
-            if (character.EquipmentSlotsOnCharacter[EquipmentSlots.BODY] != null)
+            if (character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.BODY] != null)
             {
-                sheet.AppendLine("Body: " + character.EquipmentSlotsOnCharacter[EquipmentSlots.BODY].Name);
+                sheet.AppendLine("Body: " + character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.BODY].Name);
 
             }
             else
@@ -69,9 +70,9 @@ namespace NoroffAssignment1.System
                 sheet.AppendLine("Body: Naked, as a new born babe!");
             }
             // Legs
-            if (character.EquipmentSlotsOnCharacter[EquipmentSlots.LEGS] != null)
+            if (character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.LEGS] != null)
             {
-                sheet.AppendLine("Legs: " + character.EquipmentSlotsOnCharacter[EquipmentSlots.LEGS].Name);
+                sheet.AppendLine("Legs: " + character.EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.LEGS].Name);
 
             }
             else

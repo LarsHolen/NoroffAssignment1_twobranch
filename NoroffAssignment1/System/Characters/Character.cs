@@ -12,7 +12,7 @@ namespace NoroffAssignment1.System.Characters
     {
         public string Name { get; init; }
         public int Level { get; private set; } = 1;
-        public CharacterType CharacterType { get; init; }
+        
 
         public ICharacterAttributeStrategyType CharacterAttributeStrategy;
 
@@ -20,38 +20,34 @@ namespace NoroffAssignment1.System.Characters
         public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
         public SecondaryAttributes SecondaryAttributesTotal { get; set; }
         public double Dps { get; set; }
-     
+
+        public EquipmentHandler EquipmentHandler;
 
         public List<WeaponType> UsableWeaponTypes = new();
         public List<ArmorType> UsableArmorTypes = new();
 
-        public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter { get; set; } = new Dictionary<EquipmentSlots, Item>()
-        {
-            { EquipmentSlots.HEAD, null}, 
-            { EquipmentSlots.BODY, null }, 
-            { EquipmentSlots.LEGS, null }, 
-            { EquipmentSlots.WEAPON, null } 
-        };
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name"></param>
-        public Character(string name, ICharacterAttributeStrategyType characterType, CharacterType type)
+        /// <param name="characterType"></param>
+        public Character(string name, ICharacterAttributeStrategyType characterType)
         {
             Name = name;
-            CharacterType = type;
             CharacterAttributeStrategy = characterType;
             PrimaryAttributesBase = CharacterAttributeStrategy.SetPrimaryAttributesBase(Level);
-            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentSlotsOnCharacter);
             UsableWeaponTypes = CharacterAttributeStrategy.SetUsableWeaponTypes();
             UsableArmorTypes = CharacterAttributeStrategy.SetUsableArmorTypes();
+            EquipmentHandler = new EquipmentHandler(UsableWeaponTypes, UsableArmorTypes);
+            EquipmentHandler.EquipmentChangeEvent += HandleEquipmentChange;
+            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
             CalculateDPS();
         }
 
+        
 
 
-        #region Methods for level up and updating stats
 
         /// <summary>
         /// Adds int l to Level and increase the PrimaryAttributesBase
@@ -80,13 +76,11 @@ namespace NoroffAssignment1.System.Characters
         /// </summary>
         public void CalculateStats()
         {
-            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentSlotsOnCharacter);
+            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
             SecondaryAttributesTotal = new SecondaryAttributes(PrimaryAttributesWithEquipment);
             CalculateDPS();
         }
         
-       
-
         /// <summary>
         /// To set the DPS, we set unarmed weapondmg.  Test if we have weapon.  Get 
         /// main dps attribute through the strategy.
@@ -98,68 +92,24 @@ namespace NoroffAssignment1.System.Characters
             double weaponDmg = 1;
 
             // If weapon is in Equipmentslot.WEAPON, calculate weapon dps
-            if(EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON]!= null)
+            if(EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON]!= null)
             {
-                Weapon w = EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] as Weapon;
+                Weapon w = EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] as Weapon;
                 weaponDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
             }
             // Calculate dps with the boost from PrimaryAttribute damage stat.
             Dps = weaponDmg * (1.0 + CharacterAttributeStrategy.GetMainDpsStat(PrimaryAttributesWithEquipment)/ 100.0);
         }
-        #endregion
 
-        #region Equipping items
         /// <summary>
-        /// Equip weapon or armor.  Check if class can use and is high enough level,
-        /// and recalculate stats after equipping.  Will overwrite any equipped item 
-        /// in that slot.  Returns string on sucsess.  Throws exception on fail
+        /// Handle an event from EquipmentHandler, so stats are updated after equipment change.
         /// </summary>
-        /// <param name="weapon"></param>
-        public string EquipItem(Weapon weapon)
+        private void HandleEquipmentChange(object sender, EventArgs e)
         {
-           // Test if this class can equip the weapon
-           if(UsableWeaponTypes.Contains(weapon.WeaponType))
-            {
-                if(Level >= weapon.RequiredLevel)
-                {
-                    // Equip weapon and recalculate character stats
-                    EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] = weapon;
-                    CalculateStats();
-                    return "New weapon equipped!";
-                } else
-                {
-                    throw new InvalidWeaponException("This character is too low level for this weapon.");
-                }
-                
-            } else
-            {
-                // throws custom exception if one cant use the weapon
-                throw new InvalidWeaponException("This class can not use this weapon.");
-            }
+            Console.WriteLine("Event here");
+            CalculateStats();
         }
 
-        public string EquipItem(Armor armor)
-        {
-            if(UsableArmorTypes.Contains(armor.ArmorType))
-            {
-                if(Level >= armor.RequiredLevel)
-                {
-                    EquipmentSlotsOnCharacter[armor.FitInEquipmentSlot] = armor;
-                    CalculateStats();
-                    return "New armor equipped!";
-                } else
-                {
-                    throw new InvalidArmorException("This character is too low level to use this armor.");
-                }
-                
-            }
-            else 
-            {
-                throw new InvalidArmorException("This class can not use this armor.");
-            }
-        }
-        #endregion
 
-        
     }
 }

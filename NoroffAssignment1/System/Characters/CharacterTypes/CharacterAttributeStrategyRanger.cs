@@ -13,6 +13,7 @@ namespace NoroffAssignment1.System.Characters.CharacterTypes
     {
         public PrimaryAttributes PrimaryAttributesAtLevelOne { get; init; } = new PrimaryAttributes(1, 7, 1, 8);
         public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; init; } = new PrimaryAttributes(1, 5, 1, 2);
+        public string ClassString { get; init; } = "Ranger";
 
 
         public PrimaryAttributes SetPrimaryAttributesBase(int level)

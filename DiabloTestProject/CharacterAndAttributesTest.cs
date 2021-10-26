@@ -3,6 +3,7 @@ using Xunit;
 using NoroffAssignment1.System.Characters.Attributes;
 using NoroffAssignment1.System.Characters;
 using NoroffAssignment1.System.Enums;
+using NoroffAssignment1.System;
 
 namespace DiabloTestProject
 {
