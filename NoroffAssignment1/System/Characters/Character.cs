@@ -8,7 +8,7 @@ using System.Text;
 
 namespace NoroffAssignment1.System.Characters
 {
-    public class Character : ICharacter
+    public class Character 
     {
         public string Name { get; init; }
         public int Level { get; private set; } = 1;
