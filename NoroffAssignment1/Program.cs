@@ -46,7 +46,7 @@ namespace NoroffAssignment1
                 if (input == "q" || input == "Q") loop = false;
 
 
-                //Console.Clear();
+                Console.Clear();
                 characterSheet.UpdateCharacterSheet();
             }
             

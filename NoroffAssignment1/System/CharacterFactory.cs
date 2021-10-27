@@ -8,7 +8,7 @@ using NoroffAssignment1.System.Enums;
 
 namespace NoroffAssignment1.System
 {
-    public class CharacterFactory
+    public static class CharacterFactory
     {
         /// <summary>
         /// Static factory class.  Instansiate characters of class and with "name" at level 1

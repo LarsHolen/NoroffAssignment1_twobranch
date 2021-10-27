@@ -1,26 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="NoroffAssignment1.Characters.Character">
-    <Position X="2.5" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>hAAABACIQEAAAAAAAAAAAERBABEAAAABAAAABQAEAAA=</HashCode>
-      <FileName>Characters\Character.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NoroffAssignment1.Characters.Attributes.PrimaryAttributes">
-    <Position X="0.5" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAiAAAAAAAAA4AAAAAAAAABAAAAAAAAAAAAAACA=</HashCode>
-      <FileName>Characters\Attributes\PrimaryAttributes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="NoroffAssignment1.Characters.Attributes.SecondaryAttributes">
-    <Position X="0.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIQECAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Attributes\SecondaryAttributes.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="NoroffAssignment1.Characters.Items.Item">
     <Position X="14" Y="0.75" Width="1.5" />
     <TypeIdentifier>
@@ -28,83 +7,119 @@
       <FileName>Characters\Items\Item.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Warrior">
-    <Position X="5" Y="2.25" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.CharacterFactory" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Warrior.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\CharacterFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Rogue">
-    <Position X="5" Y="3.5" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.Character" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Rogue.cs</FileName>
+      <HashCode>AAAgAAACAAAAAAgAAACgAEQBAQGgAAABAAAAIAAEQAQ=</HashCode>
+      <FileName>System\Characters\Character.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Ranger">
-    <Position X="5" Y="4.75" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.EquipmentHandler" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Ranger.cs</FileName>
+      <HashCode>BAAAAAAACAAAAAAAAAAAAEAAAAEgAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>System\Characters\EquipmentHandler.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Mage">
-    <Position X="5" Y="6" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Warrior.CharacterAttributeStrategyWarrior" Collapsed="true">
+    <Position X="7.25" Y="2" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Mage.cs</FileName>
+      <HashCode>AAEAIAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Warrior\CharacterAttributeStrategyWarrior.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Items.Armor">
-    <Position X="10.5" Y="0.75" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Warrior.CharacterEquipmentStrategyWarrior" Collapsed="true">
+    <Position X="2.75" Y="2" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Items\Armor.cs</FileName>
+      <HashCode>AEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Warrior\CharacterEquipmentStrategyWarrior.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Items.Weapon">
-    <Position X="10.5" Y="2.25" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Rogue.CharacterAttributeStrategyRogue" Collapsed="true">
+    <Position X="7.25" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Items\Weapon.cs</FileName>
+      <HashCode>AAEAIAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Rogue\CharacterAttributeStrategyRogue.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Items.WeaponAttributes">
-    <Position X="12.25" Y="2.75" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Rogue.CharacterEquipmentStrategyRogue" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAIAAAAA=</HashCode>
-      <FileName>Characters\Items\WeaponAttributes.cs</FileName>
+      <HashCode>AEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Rogue\CharacterEquipmentStrategyRogue.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Items.InvalidWeaponException" Collapsed="true">
-    <Position X="8.75" Y="3.5" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Ranger.CharacterEquipmentStrategyRanger" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Items\InvalidWeaponException.cs</FileName>
+      <HashCode>AEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Ranger\CharacterEquipmentStrategyRanger.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="NoroffAssignment1.Characters.Items.InvalidArmorException" Collapsed="true">
-    <Position X="8.75" Y="2.5" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Ranger.CharacterAttributeStrategyRanger" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Items\InvalidArmorException.cs</FileName>
+      <HashCode>AAEAIAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Ranger\CharacterAttributeStrategyRanger.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Enum Name="NoroffAssignment1.Characters.EquipmentSlots">
-    <Position X="2.5" Y="0.75" Width="1.5" />
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Mage.CharacterEquipmentStrategyMage" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAQA=</HashCode>
-      <FileName>Characters\EquipmentSlots.cs</FileName>
+      <HashCode>AEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Mage\CharacterEquipmentStrategyMage.cs</FileName>
     </TypeIdentifier>
-  </Enum>
-  <Enum Name="NoroffAssignment1.Characters.Items.WeaponType">
-    <Position X="10.5" Y="4" Width="1.5" />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NoroffAssignment1.System.Characters.CharacterTypes.Mage.CharacterAttributeStrategyMage" Collapsed="true">
+    <Position X="7.25" Y="4.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAoICAAAAAAAAABAQAAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>Characters\Items\WeaponType.cs</FileName>
+      <HashCode>AAEAIAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAQ=</HashCode>
+      <FileName>System\Characters\CharacterTypes\Mage\CharacterAttributeStrategyMage.cs</FileName>
     </TypeIdentifier>
-  </Enum>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="NoroffAssignment1.System.Characters.Attributes.PrimaryAttributes" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAiAAAAAAAAA4AAAAAAAAABAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>System\Characters\Attributes\PrimaryAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NoroffAssignment1.System.Characters.Attributes.SecondaryAttributes" Collapsed="true">
+    <Position X="11.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAECAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Characters\Attributes\SecondaryAttributes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="NoroffAssignment1.System.Characters.CharacterTypes.ICharacterAttributeStrategyType" Collapsed="true">
+    <Position X="7.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAIAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>System\Characters\CharacterTypes\ICharacterAttributeStrategyType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NoroffAssignment1.System.Characters.CharacterTypes.ICharacterEquipmentStrategy" Collapsed="true">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Characters\CharacterTypes\ICharacterEquipmentStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="NoroffAssignment1.Characters.PlayerClasses">
     <Position X="14" Y="2.75" Width="1.5" />
     <TypeIdentifier>
@@ -112,11 +127,32 @@
       <FileName>Characters\PlayerClasses.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="NoroffAssignment1.Characters.Items.ArmorType">
-    <Position X="8.75" Y="0.75" Width="1.5" />
+  <Enum Name="NoroffAssignment1.System.Enums.ArmorType" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAIAAA=</HashCode>
-      <FileName>Characters\Items\ArmorType.cs</FileName>
+      <FileName>System\Enums\ArmorType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NoroffAssignment1.System.Enums.CharacterType" Collapsed="true">
+    <Position X="11.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAgAAAAAAAAAAAgAAAAAAAAACAA=</HashCode>
+      <FileName>System\Enums\CharacterType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NoroffAssignment1.System.Enums.EquipmentSlots" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAQA=</HashCode>
+      <FileName>System\Enums\EquipmentSlots.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NoroffAssignment1.System.Enums.WeaponType" Collapsed="true">
+    <Position X="11.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAoICAAAAAAAAABAQAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>System\Enums\WeaponType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
