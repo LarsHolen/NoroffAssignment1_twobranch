@@ -7,23 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NoroffAssignment1.System.Characters
+namespace NoroffAssignment1.System.Characters.CharacterTypes
 {
     public interface ICharacterAttributeStrategyType
     {
         public PrimaryAttributes PrimaryAttributesAtLevelOne { get; init; }
         public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; init; }
 
-        public string ClassString { get; init; }
-
         public PrimaryAttributes SetPrimaryAttributesBase(int level);
 
         public int GetMainDpsStat(PrimaryAttributes primaryAttributesWithEquipment);
-
-        public PrimaryAttributes PrimaryAttributesWithEquipment(PrimaryAttributes primaryAttributesBase, Dictionary<EquipmentSlots, Item> equipmentSlotsOnCharacter);
-
-        public List<WeaponType> SetUsableWeaponTypes();
-        public List<ArmorType> SetUsableArmorTypes();
 
     }
 }

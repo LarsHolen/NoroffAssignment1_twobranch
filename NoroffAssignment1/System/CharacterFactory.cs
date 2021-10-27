@@ -1,5 +1,9 @@
 ﻿using NoroffAssignment1.System.Characters;
 using NoroffAssignment1.System.Characters.CharacterTypes;
+using NoroffAssignment1.System.Characters.CharacterTypes.Mage;
+using NoroffAssignment1.System.Characters.CharacterTypes.Ranger;
+using NoroffAssignment1.System.Characters.CharacterTypes.Rogue;
+using NoroffAssignment1.System.Characters.CharacterTypes.Warrior;
 using NoroffAssignment1.System.Enums;
 
 namespace NoroffAssignment1.System
@@ -16,10 +20,10 @@ namespace NoroffAssignment1.System
         {
             Character character = charType switch
             {
-                CharacterType.WARRIOR => new Character(name, new CharacterAttributeStrategyWarrior()),
-                CharacterType.MAGE => new Character(name, new CharacterAttributeStrategyMage()),
-                CharacterType.ROGUE => new Character(name, new CharacterAttributeStrategyRogue()),
-                CharacterType.RANGER => new Character(name, new CharacterAttributeStrategyRanger()),
+                CharacterType.WARRIOR => new Character(name, new CharacterAttributeStrategyWarrior(),new CharacterEquipmentStrategyWarrior() , charType),
+                CharacterType.MAGE => new Character(name, new CharacterAttributeStrategyMage(), new CharacterEquipmentStrategyMage(), charType),
+                CharacterType.ROGUE => new Character(name, new CharacterAttributeStrategyRogue(), new CharacterEquipmentStrategyRogue(), charType),
+                CharacterType.RANGER => new Character(name, new CharacterAttributeStrategyRanger(), new CharacterEquipmentStrategyRanger(), charType),
                 _ => null,
             };
             return character;

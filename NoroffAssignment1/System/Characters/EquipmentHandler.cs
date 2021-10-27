@@ -1,4 +1,5 @@
-﻿using NoroffAssignment1.System.Enums;
+﻿using NoroffAssignment1.System.Characters.Attributes;
+using NoroffAssignment1.System.Enums;
 using NoroffAssignment1.System.Equipment.Items;
 using System;
 using System.Collections.Generic;
@@ -14,21 +15,28 @@ namespace NoroffAssignment1.System.Characters
 
         public List<WeaponType> UsableWeaponTypes = new();
         public List<ArmorType> UsableArmorTypes = new();
-        public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter = new()
-        {
-            { EquipmentSlots.HEAD, null },
-            { EquipmentSlots.BODY, null },
-            { EquipmentSlots.LEGS, null },
-            { EquipmentSlots.WEAPON, null }
-        };
+        public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter;
 
 
-        public EquipmentHandler(List<WeaponType> usableWeaponTypes, List<ArmorType> usableArmorTypes  )
+
+        public EquipmentHandler(List<WeaponType> usableWeaponTypes, List<ArmorType> usableArmorTypes, Dictionary<EquipmentSlots, Item> equipmentSlotsOnCharacter)
         {
             UsableArmorTypes = usableArmorTypes;
             UsableWeaponTypes = usableWeaponTypes;
+            EquipmentSlotsOnCharacter = equipmentSlotsOnCharacter;
         }
 
+
+        public static PrimaryAttributes PrimaryAttributesWithEquipment(PrimaryAttributes primaryAttributesBase, Dictionary<EquipmentSlots, Item> equipmentSlotsOnCharacter)
+        {
+            PrimaryAttributes primaryAttributesWithEquipment = primaryAttributesBase;
+            foreach (KeyValuePair<EquipmentSlots, Item> pair in equipmentSlotsOnCharacter)
+            {
+                if (pair.Value != null) primaryAttributesWithEquipment += pair.Value.ItemBonusAttributes;
+
+            }
+            return primaryAttributesWithEquipment;
+        }
 
         #region Equipping items
         /// <summary>
@@ -80,7 +88,7 @@ namespace NoroffAssignment1.System.Characters
                 throw new InvalidArmorException("This class can not use this armor.");
             }
         }
-        #endregion
+        #endregion 
 
     }
 }

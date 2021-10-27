@@ -12,9 +12,11 @@ namespace NoroffAssignment1.System.Characters
     {
         public string Name { get; init; }
         public int Level { get; private set; } = 1;
-        
+        public string ClassString { get; init; }
+
 
         public ICharacterAttributeStrategyType CharacterAttributeStrategy;
+        public ICharacterEquipmentStrategy CharacterEquipmentStrategy;
 
         public PrimaryAttributes PrimaryAttributesBase { get; set; }
         public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
@@ -22,6 +24,15 @@ namespace NoroffAssignment1.System.Characters
         public double Dps { get; set; }
 
         public EquipmentHandler EquipmentHandler;
+
+        public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter = new()
+        {
+            { EquipmentSlots.HEAD, null },
+            { EquipmentSlots.BODY, null },
+            { EquipmentSlots.LEGS, null },
+            { EquipmentSlots.WEAPON, null }
+        };
+
 
         public List<WeaponType> UsableWeaponTypes = new();
         public List<ArmorType> UsableArmorTypes = new();
@@ -32,16 +43,27 @@ namespace NoroffAssignment1.System.Characters
         /// </summary>
         /// <param name="name"></param>
         /// <param name="characterType"></param>
-        public Character(string name, ICharacterAttributeStrategyType characterType)
+        public Character(string name, ICharacterAttributeStrategyType characterAttributeStrategy, ICharacterEquipmentStrategy characterEquipmentStrategy , CharacterType characterType)
         {
             Name = name;
-            CharacterAttributeStrategy = characterType;
+
+            ClassString = characterType switch
+            {
+                CharacterType.WARRIOR => ("Warrior"),
+                CharacterType.MAGE => ("Mage"),
+                CharacterType.ROGUE => ("Rogue"),
+                CharacterType.RANGER => ("Ranger"),
+                _ => null,
+            };
+
+            CharacterAttributeStrategy = characterAttributeStrategy;
+            CharacterEquipmentStrategy = characterEquipmentStrategy;
             PrimaryAttributesBase = CharacterAttributeStrategy.SetPrimaryAttributesBase(Level);
-            UsableWeaponTypes = CharacterAttributeStrategy.SetUsableWeaponTypes();
-            UsableArmorTypes = CharacterAttributeStrategy.SetUsableArmorTypes();
-            EquipmentHandler = new EquipmentHandler(UsableWeaponTypes, UsableArmorTypes);
+           // UsableWeaponTypes = CharacterEquipmentStrategy.SetUsableWeaponTypes();
+           // UsableArmorTypes = CharacterEquipmentStrategy.SetUsableArmorTypes();
+            EquipmentHandler = new EquipmentHandler(CharacterEquipmentStrategy.SetUsableWeaponTypes(), CharacterEquipmentStrategy.SetUsableArmorTypes(), EquipmentSlotsOnCharacter);
             EquipmentHandler.EquipmentChangeEvent += HandleEquipmentChange;
-            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
+            PrimaryAttributesWithEquipment = EquipmentHandler.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
             CalculateDPS();
         }
 
@@ -76,7 +98,7 @@ namespace NoroffAssignment1.System.Characters
         /// </summary>
         public void CalculateStats()
         {
-            PrimaryAttributesWithEquipment = CharacterAttributeStrategy.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
+            PrimaryAttributesWithEquipment = EquipmentHandler.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
             SecondaryAttributesTotal = new SecondaryAttributes(PrimaryAttributesWithEquipment);
             CalculateDPS();
         }
@@ -106,7 +128,6 @@ namespace NoroffAssignment1.System.Characters
         /// </summary>
         private void HandleEquipmentChange(object sender, EventArgs e)
         {
-            Console.WriteLine("Event here");
             CalculateStats();
         }
 

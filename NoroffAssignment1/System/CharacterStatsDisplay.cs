@@ -24,7 +24,7 @@ namespace NoroffAssignment1.System
             sheet.AppendLine("-------Character Sheet--------");
             sheet.AppendLine();
             sheet.AppendLine("Name: " + character.Name );
-            sheet.AppendLine("Class: " + character.CharacterAttributeStrategy.ClassString);
+            sheet.AppendLine("Class: " + character.ClassString);
             sheet.AppendLine("Level: " + character.Level);
             sheet.AppendLine("Strength: " + character.PrimaryAttributesWithEquipment.Strength.ToString());
             sheet.AppendLine("Vitality: " + character.PrimaryAttributesWithEquipment.Vitality.ToString());
