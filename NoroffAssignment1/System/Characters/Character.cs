@@ -14,7 +14,6 @@ namespace NoroffAssignment1.System.Characters
         public int Level { get; private set; } = 1;
         public string ClassString { get; init; }
 
-
         public ICharacterAttributeStrategyType CharacterAttributeStrategy;
         public ICharacterEquipmentStrategy CharacterEquipmentStrategy;
 
@@ -39,9 +38,11 @@ namespace NoroffAssignment1.System.Characters
 
 
         /// <summary>
-        /// Constructor
+        /// Constructor.  Require a name, the two strategies and the charactertype
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="characterAttributeStrategy"></param>
+        /// <param name="characterEquipmentStrategy"></param>
         /// <param name="characterType"></param>
         public Character(string name, ICharacterAttributeStrategyType characterAttributeStrategy, ICharacterEquipmentStrategy characterEquipmentStrategy , CharacterType characterType)
         {
@@ -58,12 +59,13 @@ namespace NoroffAssignment1.System.Characters
 
             CharacterAttributeStrategy = characterAttributeStrategy;
             CharacterEquipmentStrategy = characterEquipmentStrategy;
-            PrimaryAttributesBase = CharacterAttributeStrategy.SetPrimaryAttributesBase(Level);
-           // UsableWeaponTypes = CharacterEquipmentStrategy.SetUsableWeaponTypes();
-           // UsableArmorTypes = CharacterEquipmentStrategy.SetUsableArmorTypes();
+
             EquipmentHandler = new EquipmentHandler(CharacterEquipmentStrategy.SetUsableWeaponTypes(), CharacterEquipmentStrategy.SetUsableArmorTypes(), EquipmentSlotsOnCharacter);
             EquipmentHandler.EquipmentChangeEvent += HandleEquipmentChange;
+
+            PrimaryAttributesBase = CharacterAttributeStrategy.SetPrimaryAttributesBase(Level);
             PrimaryAttributesWithEquipment = EquipmentHandler.PrimaryAttributesWithEquipment(PrimaryAttributesBase, EquipmentHandler.EquipmentSlotsOnCharacter);
+            
             CalculateDPS();
         }
 
@@ -109,18 +111,17 @@ namespace NoroffAssignment1.System.Characters
         /// </summary>
         private void CalculateDPS()
         {
-            // Set unarmed weapondamage to 1, in case the character does not equit a weapon
-            // Dps for 1 weapondamage is 1, so no need to calculate dps for it.
-            double weaponDmg = 1;
+            // Unarmed weaponDps is 1, so we set it to 1 before checking if character is armed
+            double weaponDps = 1;
 
             // If weapon is in Equipmentslot.WEAPON, calculate weapon dps
             if(EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON]!= null)
             {
                 Weapon w = EquipmentHandler.EquipmentSlotsOnCharacter[EquipmentSlots.WEAPON] as Weapon;
-                weaponDmg = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
+                weaponDps = w.WeaponAttribute.BaseDamage * w.WeaponAttribute.AttacksPerSecond;
             }
             // Calculate dps with the boost from PrimaryAttribute damage stat.
-            Dps = weaponDmg * (1.0 + CharacterAttributeStrategy.GetMainDpsStat(PrimaryAttributesWithEquipment)/ 100.0);
+            Dps = weaponDps * (1.0 + CharacterAttributeStrategy.GetMainDpsStat(PrimaryAttributesWithEquipment)/ 100.0);
         }
 
         /// <summary>

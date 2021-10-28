@@ -12,6 +12,5 @@ namespace NoroffAssignment1.System.Enums
         BODY,
         LEGS,
         WEAPON
-
     }
 }

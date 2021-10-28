@@ -17,8 +17,12 @@ namespace NoroffAssignment1.System.Characters
         public List<ArmorType> UsableArmorTypes = new();
         public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter;
 
-
-
+        /// <summary>
+        /// Constructor 
+        /// </summary>
+        /// <param name="usableWeaponTypes"></param>
+        /// <param name="usableArmorTypes"></param>
+        /// <param name="equipmentSlotsOnCharacter"></param>
         public EquipmentHandler(List<WeaponType> usableWeaponTypes, List<ArmorType> usableArmorTypes, Dictionary<EquipmentSlots, Item> equipmentSlotsOnCharacter)
         {
             UsableArmorTypes = usableArmorTypes;

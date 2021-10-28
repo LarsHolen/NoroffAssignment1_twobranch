@@ -15,9 +15,10 @@ namespace NoroffAssignment1
         static void Main()
         {
             /*
-            Shows a charactersheet and let the user try random armor/weapons. 
-            And level up the character.    
-                */
+            Shows a charactersheet and let the user try to equip random armor/weapons, 
+            and level up the character.    
+            */
+            
 
             ItemTests items = new();
             bool loop = true;
@@ -26,7 +27,7 @@ namespace NoroffAssignment1
             // Using the factory to create a character
             Character war = CharacterFactory.MakeCharacter(CharacterType.WARRIOR, "Haladan");
 
-            // Using CharacterStatsDisplay to show character stats on console.
+            // Using CharacterStatsDisplay to show character stats on console.  Using a new class rather than overriding ToString
             CharacterStatsDisplay characterSheet = new(war);
           
             // Adding a little interactivity to show that leveling and gearing up works
