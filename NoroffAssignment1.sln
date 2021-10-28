@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CD53CEB-AC7F-4E95-8E3A-B09E98CDE028}"
 	ProjectSection(SolutionItems) = preProject
 		Assignment 1_CSharp_RPGCharacters.pdf = Assignment 1_CSharp_RPGCharacters.pdf
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
