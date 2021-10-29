@@ -4,7 +4,7 @@ using System;
 
 namespace NoroffAssignment1.System.Characters
 {
-    public class Mage : Character, ICharacter
+    public class Mage : Character
     {
 
         public Mage(string n)
