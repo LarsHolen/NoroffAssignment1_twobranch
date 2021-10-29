@@ -12,3 +12,5 @@ up and see the statistics change.
 ## FactoryAndStrategy
 The branch, is the same project.  But changed to use interfaces, behavior design
 pattern Strategy and creational design pattern Factory method.
+
+
