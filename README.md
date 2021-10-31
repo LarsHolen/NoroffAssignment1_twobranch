@@ -9,8 +9,8 @@ on any design patterns.  Unit testing is done with Xunit.  When one run the
 program, one can see a character sheet.  And one can equip random items, level
 up and see the statistics change.
 
-## FactoryAndStrategy
-The branch, is the same project.  But changed to use interfaces, behavior design
+## FactoryAndStrategy branch:
+This is the same project.  But changed to use interfaces, behavior design
 pattern Strategy and creational design pattern Factory method.
 
 

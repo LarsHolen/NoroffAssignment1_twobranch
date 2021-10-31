@@ -63,9 +63,8 @@ namespace NoroffAssignment1
         /// <param name="cha"></param>
         private static void EquipRandomWeapon(ItemTests items, Character cha)
         {
-            Random rnd = new();
             string result;
-            Weapon weapon = items.WeaponList[rnd.Next(0, items.WeaponList.Count)];
+            Weapon weapon = ItemFactory.GetRandomWeapon();
             try
             {
                 result = cha.EquipmentHandler.EquipItem(weapon, cha.Level);
@@ -83,9 +82,8 @@ namespace NoroffAssignment1
 
         private static void EquipRandomArmor(ItemTests items, Character cha)
         {
-            Random rnd = new();
             string result;
-            Armor armor = items.ArmorList[rnd.Next(0, items.ArmorList.Count)];
+            Armor armor = ItemFactory.GetRandomArmor();
             try
             {
                 result = cha.EquipmentHandler.EquipItem(armor, cha.Level);
