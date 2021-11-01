@@ -17,14 +17,19 @@ namespace DiabloTestProject
             int Attribute = 10;
             PrimaryAttributes pa1 = new() { Strength = Attribute, Intelligence = Attribute, Vitality = Attribute, Dexterity = Attribute };
             PrimaryAttributes pa2 = new() { Strength = Attribute, Intelligence = Attribute, Vitality = Attribute, Dexterity = Attribute };
-            int expectedAttribute = pa1.Strength + pa2.Strength;
+            int expectedStrengthAttribute = pa1.Strength + pa2.Strength;
+            int expectedDexterityAttribute = pa1.Dexterity + pa2.Dexterity;
+            int expectedVitalityAttribute = pa1.Vitality + pa2.Vitality;
+            int expectedIntelligenceAttribute = pa1.Intelligence + pa2.Intelligence;
+            PrimaryAttributes expectedPrimaryAttributes = new() { Strength = expectedStrengthAttribute, Dexterity = expectedDexterityAttribute, Vitality = expectedVitalityAttribute, Intelligence = expectedIntelligenceAttribute };
+
 
             // Act
-            PrimaryAttributes pa3 = pa1 + pa2;
-            int actual = pa3.Strength;
+            PrimaryAttributes actual = pa1 + pa2;
+            
 
             // Assert
-            Assert.Equal(expectedAttribute, actual);
+            Assert.Equal(expectedPrimaryAttributes, actual);
         }
         #endregion
 

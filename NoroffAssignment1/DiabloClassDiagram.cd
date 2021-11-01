@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="NoroffAssignment1.Characters.Items.Item">
-    <Position X="14" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAIAAAAAEAABAA=</HashCode>
-      <FileName>Characters\Items\Item.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="NoroffAssignment1.System.CharacterFactory">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -135,26 +128,19 @@
     </TypeIdentifier>
   </Struct>
   <Interface Name="NoroffAssignment1.System.Characters.CharacterTypes.ICharacterAttributeStrategyType" Collapsed="true">
-    <Position X="9" Y="1" Width="1.5" />
+    <Position X="9" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAIAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>System\Characters\CharacterTypes\ICharacterAttributeStrategyType.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="NoroffAssignment1.System.Characters.CharacterTypes.ICharacterEquipmentStrategy" Collapsed="true">
-    <Position X="4.75" Y="1" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>System\Characters\CharacterTypes\ICharacterEquipmentStrategy.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="NoroffAssignment1.Characters.PlayerClasses">
-    <Position X="14" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAACAAAgAAAAAAAAAAAgAAAAAAAAACAA=</HashCode>
-      <FileName>Characters\PlayerClasses.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Enum Name="NoroffAssignment1.System.Enums.ArmorType" Collapsed="true">
     <Position X="11.75" Y="2" Width="1.5" />
     <TypeIdentifier>

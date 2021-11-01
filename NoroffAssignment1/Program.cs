@@ -1,10 +1,9 @@
 ﻿using NoroffAssignment1.System;
 using NoroffAssignment1.System.Characters;
-using NoroffAssignment1.System.Characters.Attributes;
 using NoroffAssignment1.System.Enums;
 using NoroffAssignment1.System.Equipment.Items;
 using System;
-using System.Threading;
+
 
 namespace NoroffAssignment1
 {
@@ -19,8 +18,6 @@ namespace NoroffAssignment1
             and level up the character.    
             */
             
-
-            ItemTests items = new();
             bool loop = true;
             string input;
            
@@ -42,8 +39,8 @@ namespace NoroffAssignment1
                 input = Console.ReadLine();
 
                 if (input == "l" || input == "L") war.LevelUp(1);
-                if (input == "a" || input == "A") EquipRandomArmor(items, war);
-                if (input == "w" || input == "W") EquipRandomWeapon(items, war);
+                if (input == "a" || input == "A") EquipRandomArmor(war);
+                if (input == "w" || input == "W") EquipRandomWeapon(war);
                 if (input == "q" || input == "Q") loop = false;
 
 
@@ -61,7 +58,7 @@ namespace NoroffAssignment1
         /// </summary>
         /// <param name="items"></param>
         /// <param name="cha"></param>
-        private static void EquipRandomWeapon(ItemTests items, Character cha)
+        private static void EquipRandomWeapon(Character cha)
         {
             string result;
             Weapon weapon = ItemFactory.GetRandomWeapon();
@@ -80,7 +77,7 @@ namespace NoroffAssignment1
             
         }
 
-        private static void EquipRandomArmor(ItemTests items, Character cha)
+        private static void EquipRandomArmor(Character cha)
         {
             string result;
             Armor armor = ItemFactory.GetRandomArmor();
