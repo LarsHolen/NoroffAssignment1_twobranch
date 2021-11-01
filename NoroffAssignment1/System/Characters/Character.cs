@@ -4,26 +4,36 @@ using NoroffAssignment1.System.Enums;
 using NoroffAssignment1.System.Equipment.Items;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace NoroffAssignment1.System.Characters
 {
     public class Character 
     {
+        // Name of character
         public string Name { get; init; }
+        // Level of character
         public int Level { get; private set; } = 1;
+        // Characters playerclass in a string
         public string ClassString { get; init; }
 
+        // Strategies for Attributes and equipment
         public ICharacterAttributeStrategyType CharacterAttributeStrategy;
         public ICharacterEquipmentStrategy CharacterEquipmentStrategy;
 
+        // Characters PrimaryAttributes without and item bonuses
         public PrimaryAttributes PrimaryAttributesBase { get; set; }
+        // Characters PrimaryAttributes including bonuses from items
         public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
+        // Characters SecondaryAttributes calculated from primaryAttributes including item bonuses
         public SecondaryAttributes SecondaryAttributesTotal { get; set; }
+
+        // Characters damage pr second with current PrimaryAttributes including item bonuses and weapon damege/spped
         public double Dps { get; set; }
 
+        // Class that handle equipping items
         public EquipmentHandler EquipmentHandler;
 
+        // Characters item slots.  All slots empty/null at start
         public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter = new()
         {
             { EquipmentSlots.HEAD, null },
@@ -32,7 +42,7 @@ namespace NoroffAssignment1.System.Characters
             { EquipmentSlots.WEAPON, null }
         };
 
-
+        // Lists for that items this character can use
         public List<WeaponType> UsableWeaponTypes = new();
         public List<ArmorType> UsableArmorTypes = new();
 
