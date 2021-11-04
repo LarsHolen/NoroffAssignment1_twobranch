@@ -9,20 +9,30 @@ namespace NoroffAssignment1.System.Characters
 {
     public abstract class Character
     {
+        // Character name
         public string Name { get; set; }
+        // Character level
         public int Level { get; set; } = 1;
+        // Character PrimaryAttributes without item bonuses
         public PrimaryAttributes PrimaryAttributesBase { get; set; }
+        // Character PrimaryAttributes including item bonuses
         public PrimaryAttributes PrimaryAttributesWithEquipment { get; set; }
+        // Characters SecondaryAttributes, caluculated from PrimaryAttributes including item bonuses
         public SecondaryAttributes SecondaryAttributesTotal { get; set; }
+        // Damage pr second calculated from PrimaryAttributes including item bonuses and weapon damage/speed
         public double Dps { get; set; }
 
 
+        // Characters starting PrimaryAttribues at level 1
         public PrimaryAttributes PrimaryAttributesAtLevelOne { get; set; }
+        // Character gain these PrimaryAttributed each time one gain a level
         public PrimaryAttributes PrimaryAttributesLevelUpBonus { get; set; }
 
+        // List of item types the character can use
         public List<WeaponType> UsableWeaponTypes = new();
         public List<ArmorType> UsableArmorTypes = new();
 
+        // Slots on the character that can hold items.
         public Dictionary<EquipmentSlots, Item> EquipmentSlotsOnCharacter { get; set; } = new Dictionary<EquipmentSlots, Item>()
         {
             { EquipmentSlots.HEAD, null}, 
